@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@200..900&family=Rubik+Doodle+Triangles&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@200..900&family=Rubik+Doodle+Triangles&family=Whisper&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul {
+    list-style-type: none;
+}
+h1,h2,h3,h4,h5,h6,p,a,input,textarea, ul{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+
+body {
+    background-color: #064980
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header_h1 {
+    font-family: "whisper";
+    margin-top: 15px;
+    width: 100%;
+    display: block;
+    background-color: #ffffff;
+    color: #064980;
+    text-align: center;
+    padding: 10px;
+}
+
+.parrafo {
+    font-family: "Noto Serif HK";
+    font-size: 25px;
+    margin: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.botonCompra {
+    text-decoration: underline;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 15px;
+    margin: 20px;
+    color: #064980;
+}
+
+.strong {
+    text-decoration: underline;
+}
+
+.contenedor-img {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.contenedor-img img {
+    width: 20%;
+    margin: 3px;
+    border-radius: 10px;
+}
