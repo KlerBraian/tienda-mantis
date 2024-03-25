@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tienda Mantis: Tu destino en línea para productos musicales de alta calidad. Encuentra guitarras eléctricas, bajos poderosos, pedales y accesorios esenciales.">
-<meta name="keywords" content="Tienda Mantis, música, instrumentos musicales, guitarras, bajos, pedales, accesorios">
+    <meta name="keywords" content="Tienda Mantis, música, instrumentos musicales, guitarras, bajos, pedales, accesorios">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="estilos.css">
     <title>Primera entrega</title>
 </head>
 <body>
-    <!-- <div class="wrapper">
-    <aside> -->
         <header class="header">
             <h1 class="header_h1">Tienda Mantis</h1>
             <p class="parrafo">¡Hola! Bienvenido a Tienda Mantis, tu destino en línea para productos musicales de alta calidad. Desde guitarras eléctricas hasta bajos poderosos y una gama de pedales y accesorios esenciales, estamos aquí para satisfacer todas tus necesidades musicales. Explora nuestra selección cuidadosamente curada y encuentra tu próximo instrumento favorito. ¡Que comience la música!</p>
@@ -19,29 +18,89 @@
         </header>
         <main>
             <div class="contenedor-img">
-                <img src="./img/Guitarras/guitarra-1-dean.jpg" alt="duitarra-dean">
-                <img src="./img/Bajos/bajo-4-spector.jpg" alt="bajo-4-spector">
-                <img src="./img/Pedales/pedal-5-whammy.jpg" alt="pedal-5-whammy">
-                <img src="./img/Accesorios/acces-3-cable.jpg" alt="">
+                <div class="contenedor-div">
+                    <img src="./img/Guitarras/guitarra-1-dean.jpg" alt="duitarra-dean">
+                    <p>Guitarras</p>
+                </div>
+                <div class="contenedor-div">
+                    <img src="./img/Bajos/bajo-4-spector.jpg" alt="bajo-4-spector">
+                    <p>Bajos</p>
+                </div>
+                <div class="contenedor-div">
+                    <img src="./img/Pedales/pedal-5-whammy.jpg" alt="pedal-5-whammy">
+                    <p>Pedales y Efectos</p>
+                </div>
+                <div class="contenedor-div">
+                    <img src="./img/Accesorios/acces-3-cable.jpg" alt="">
+                    <p>Accesorios</p>
+                </div>
             </div>
         </main>
-        <!-- <nav>
-            <ul class="nav__ul">
-                <li><button class="">Todos los productos</button></li>
-                <li><button class="">Guitarras</button></li>
-                <li><button class="">Bajos</button></li>
-                <li><button class="">Pedales</button></li>
-                <li><button class="">Accesorios</button></li>
-                <li><a class="boton-carrito" href="carrito.html">Carrito <span class="numerito">0</span></a></li>
-            </ul>
-        </nav>
-        <footer class="texto-foooter">@ Tienda Mantis</footer>
-    </aside>
-    <main>
-        <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
-            <div id="contenedor-productos" class="contenedor-productos">
-    </main>
-</div> -->
+    
+    
+        <div class="container">
+            <aside> 
+                <header>
+                    <h1 class="logo">Tienda Mantis</h1>
+                </header>
+                <nav>
+                    <ul class="menu">
+                        <li>
+                            <button class="boton-menu active"><i class="bi bi-music-note-beamed"></i> Todos los productos</button></li>
+                        <li>
+                            <button class="boton-menu"><i class="bi bi-music-note-beamed"></i> Guitarras</button></li>
+                        <li>
+                            <button class="boton-menu"><i class="bi bi-music-note-beamed"></i> Bajos</button></li>
+                        <li>
+                            <button class="boton-menu"><i class="bi bi-music-note-beamed"></i> Pedales</button></li>
+                        <li>
+                            <button class="boton-menu"><i class="bi bi-music-note-beamed"></i> Accesorios</button></li>
+                        <li>
+                            <a class="boton-menu boton-carrito" href="carrito.html"><i class="bi bi-cart3"></i> Carrito <span class="numerito">0</span></a></li>
+                    </ul>
+                </nav>
+                <footer class="texto-footer">@ Tienda Mantis
+                </footer>
+            </aside>
+           
+           
+            <main>
+                <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
+                <div id="contenedor-productos" class="contenedor-productos">
+                    <div class="producto">
+                        <img class="producto-imagen" src="./img/Guitarras/guitarra-1-dean.jpg" alt="">
+                        <div class="detalles">
+                            <h3 class="producto-titulo">Guitarra</h3>
+                            <p class="producto-precio">$15000</p>
+                            <button class="producto-agregar">Agregar</button>
+                        </div>
+                    </div>
+                    <div class="producto">
+                    <img class="producto-imagen" src="./img/Guitarras/guitarra-1-dean.jpg" alt="">
+                        <div class="detalles">
+                        <h3 class="producto-titulo">Guitarra2</h3>
+                        <p class="producto-precio">$15000</p>
+                        <button class="producto-agregar">Agregar</button>
+                        </div>
+                    </div>
+                    <div class="producto">
+                        <img class="producto-imagen" src="./img/Guitarras/guitarra-1-dean.jpg" alt="">
+                            <div class="detalles">
+                            <h3 class="producto-titulo">Guitarra2</h3>
+                            <p class="producto-precio">$15000</p>
+                            <button class="producto-agregar">Agregar</button>
+                            </div>
+                        </div>
+                        <div class="producto">
+                            <img class="producto-imagen" src="./img/Guitarras/guitarra-1-dean.jpg" alt="">
+                                <div class="detalles">
+                                <h3 class="producto-titulo">Guitarra2</h3>
+                                <p class="producto-precio">$15000</p>
+                                <button class="producto-agregar">Agregar</button>
+                                </div>
+                            </div>
+                </div>
+            </main>
 <script src="./main.js">
 </script>   
 </body>

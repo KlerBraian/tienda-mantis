@@ -202,7 +202,6 @@ function agregarAlCarrito() {
             comprarMasProductos = false;
             comprar = false
         } else if(validarRespuesta(continuarComprando) ==='si') {
-            continuarComprando= false;
             break;
         }
     }
