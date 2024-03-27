@@ -146,7 +146,8 @@ const categorias = ["Guitarras", "Bajos", "Pedales", "Accesorios"];
 
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const botonCategorias = document.querySelectorAll(".boton-categoria");
-const tituloPrincipal = document.querySelector("#titulo-principal")
+const tituloPrincipal = document.querySelector("#titulo-principal");
+const numeroCarrito = document.querySelector(".numerito");
 
 function cargarProductos (productosElegidos){
 
@@ -166,6 +167,7 @@ function cargarProductos (productosElegidos){
         `
         contenedorProductos.append(div);
     })
+    actualizarBotonesAgregar();
 }
 
 cargarProductos(prodArray);
@@ -187,10 +189,58 @@ botonCategorias.forEach(boton => {
 })
 
 
+let carrito;
+let productosCarritoLS = localStorage.getItem("productos-carrito");
+
+if (productosCarritoLS) {
+    carrito = JSON.parse(productosCarritoLS);
+    actualizarNumeroCarrito();
+} else {
+    carrito = [];
+}
+
+
+function actualizarBotonesAgregar() {
+    botonesAgregar = document.querySelectorAll(".producto-agregar");
+
+    botonesAgregar.forEach(boton => {
+        boton.addEventListener("click", agregarAlCarrito);
+    });
+}
+
+
+function agregarAlCarrito(e) {
+
+            const idBoton = e.currentTarget.id;
+            const productoAgregado = prodArray.find(producto => producto.id === idBoton);
+        
+            if(carrito.some(producto => producto.id === idBoton)) {
+            const index = carrito.findIndex(producto => producto.id === idBoton);
+            carrito[index].cantidad++;
+            carrito[index].subtotal += carrito[index].precio;
+
+            } else {
+            productoAgregado.subtotal = productoAgregado.precio;
+            productoAgregado.cantidad = 1;
+            carrito.push(productoAgregado);
+}
+
+actualizarNumeroCarrito();
+
+localStorage.setItem("productos-carrito", JSON.stringify(carrito));
+
+}
 
 
 
-let carrito = [];
+function actualizarNumeroCarrito() {
+let nuevoNumero = carrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+numeroCarrito.innerText = nuevoNumero;
+}
+
+
+
+
 
 // let botonCompra = document.querySelector('#botonCompra');
 // botonCompra.addEventListener('click',iniciarPrograma);

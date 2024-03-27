@@ -22,73 +22,6 @@ a{
 body {
     background-color: #064980
 }
-/* 
-.header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.header_h1 {
-    font-family: "whisper";
-    margin-top: 15px;
-    width: 100%;
-    display: block;
-    background-color: #ffffff;
-    color: #064980;
-    text-align: center;
-    padding: 10px;
-}
-
-.parrafo {
-    font-family: "Noto Serif HK";
-    font-size: 25px;
-    margin: 30px;
-    font-weight: bold;
-    color: white;
-}
-
-.botonCompra {
-    text-decoration: underline;
-    font-size: 15px;
-    font-weight: bold;
-    border-radius: 50px;
-    padding: 15px;
-    margin: 20px;
-    color: #064980;
-}
-
-.strong {
-    text-decoration: underline;
-}
-
-.contenedor-img {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.contenedor-div {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: 10px;
-}
-
-.contenedor-div p {
-    margin: 3px;
-    font-size: 30px;
-    color:#ffffff;
-    text-align: center;
-}
-
-.contenedor-img img {
-    width: 300px;
-    border-radius: 10px;
-    height: 300px;
-} */
 
 .container {
     display: grid;
@@ -100,19 +33,24 @@ aside {
     display: flex;
     flex-direction: column;
     justify-content: space-between;   
-    padding: 2rem;
+    padding: 1rem;
     padding-right: 0;
     color: #ffffff;
     position: sticky;
     top: 0;
     height: 100vh;
+    margin-right: 0.5rem;
 }
 
 .logo {
+    margin-left: 5rem;
+    color: #ffffff;
     font-family: "whisper";
     font-weight: bold;
     font-size: 2rem;
     text-align: center;
+    border-radius: 0.8rem ;
+    text-shadow:  0 0 5px red, 0 0 5px red, 0 0 5px red, 0 0 5px red;
 }
 
 .logo-imagen {
@@ -120,26 +58,31 @@ aside {
     margin-left: -10px;
     margin-top: 10px;
     border-radius: 0.8rem;
+    border: #000000 10px double;
+    text-align: center;
 }
 
 .texto-footer {
     color: gray;
     font-size: 0.85rem;
+    text-align: center;
 }
 
 main {
-    background-color: #ffffff;
+    background-image: url(../img/logofondo.jpeg);
+    background-size: cover;
+    aspect-ratio: 1/1;
     margin: 1rem;
     margin-left: 0;
     padding: 2rem;
     padding-bottom: 5rem;
     border-radius: 30px;
-    border: black 10px double;
+    border: #ffffff 10px double;
 
 }
 
 .titulo-principal {
-    color: black;
+    color:#ffffff
 
 }
 
@@ -151,9 +94,11 @@ main {
 }
 
 .producto {
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     margin-top: 3rem;
+    border-radius: 1rem;
 }
 
 .producto-imagen {
@@ -163,6 +108,12 @@ main {
     border-radius: 1rem;
     height: 100%;
     object-fit: contain;
+}
+
+.contenedor-titulo {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 .detalles {
@@ -200,12 +151,36 @@ main {
 .producto-agregar:hover {
     background-color:#064980;
     color: #ffffff;
+    text-shadow:  0 0 5px red, 0 0 5px red, 0 0 5px red, 0 0 5px red;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #064980;
+}
+.menu-nav-ul {
+    display: flex;
+    justify-content: end;
+   
+}
+.menu-nav-ul li {
+    margin-inline: 1rem;
+    cursor: pointer;
+    color: #064980;
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: gray;
+    padding: 0.5rem;
+    border-radius: 2rem;
 }
 
 .menu {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    margin-top: -10rem;
 }
 
 .boton-menu{
@@ -282,6 +257,10 @@ main {
     font-weight: bold;
 }
 
+.carrito-opciones-cantidad {
+    display: flex;
+}
+
 .carrito-producto-eliminar {
     border: 0;
     font-size: 1rem;
@@ -332,6 +311,43 @@ main {
     text-transform: uppercase;
 }
 
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
 .disabled {
     display: none;
 }
+
+  .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1;}
+  
+  .show {display:block;
+}
+

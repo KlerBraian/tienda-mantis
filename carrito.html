@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda Mantis</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="./style/estilos.css">
 </head>
 <body>
 
@@ -26,6 +26,7 @@
                     </li>
                 </ul>
             </nav>
+            <button id= "boton-envio" class="boton-menu boton-envio"><i class="bi bi-truck"></i> Calcular costo de envio</button>
             <footer>
                 <p class="texto-footer">© 2022 Tienda Mantis</p>
             </footer>
@@ -33,49 +34,48 @@
         <main>
             <h2 class="titulo-principal">Carrito</h2>
             <div class="contenedor-carrito">
-                <p id="carrito-vacio" class="carrito-vacio">Tu carrito está vacío.</p>
-
-                <div id="carrito-productos" class="carrito-productos disabled">
-                    
-                    <div class="carrito-producto">
-                        <img class="carrito-producto-imagen" src="./img/Guitarras/guitarra-1-dean.jpg" alt="">
-                        <div class="carrito-producto-titulo">
-                            <small>Titulo</small>
-                            <h3>Guitarra</h3>
-                        </div>
-                        <div class="carrito-producto-cantidad">
-                            <small>Cantidad</small>
-                            <p>1</p>
-                        </div>
-                        <div class="carrito-producto-precio">
-                            <small>Precio</small>
-                            <p>$15000</p>
-                        </div>
-                        <div class="carrito-producto-subtotal">
-                            <small>Subtotal</small>
-                            <p>$10000</p>
-                        </div>
-                        <button class="carrito-producto-eliminar"><i class="bi bi-trash"></i></button> 
-                    </div>
-                    <!-- Esto se va a completar con el JS -->
+                <p id="carrito-vacio" class="carrito-vacio">Tu carrito está vacío.👎</p>
+                <div id="carrito-productos" class="carrito-productos disabled">  
                 </div>
                 <div id="carrito-acciones" class="carrito-acciones disabled">
+                    <div id="envio" class="dropdown disabled ">
+                        <button id="dropbtn" class="dropbtn">Seleccionar Opción <i class="bi bi-arrow-down-circle"></i></button>
+                        <div id= "desplegado" class="dropdown-content">
+                          <a class="opcion">CABA</a>
+                          <a class="opcion">Gran Buenos Aires</a>
+                          <a class="opcion">Interior</a>
+                          <a class="opcion">Sin envio</a>
+                        </div>
+                    </div>
                     <div class="carrito-acciones-izquierda">
                         <button id="carrito-acciones-vaciar" class="carrito-acciones-vaciar">Vaciar carrito</button>
                     </div>
                     <div class="carrito-acciones-derecha">
                         <div class="carrito-acciones-total">
-                            <p>Total:</p>
-                            <p id="total">$3000</p>
+                            <p>Total: </p>
+                            <p id="total"></p>
                         </div>
-                        <button id="carrito-acciones-comprar" class="carrito-acciones-comprar">Comprar ahora</button>
+                        <button id="carrito-acciones-comprar" class="carrito-acciones-comprar">Comprar</button>
                     </div>
                 </div>
+                
+                <p id="carrito-comprado" class="carrito-comprado disabled">Muchas gracias por tu compra.🤟 </p>
 
-                <p id="carrito-comprado" class="carrito-comprado disabled">Muchas gracias por tu compra. <i class="bi bi-emoji-laughing"></i></p>
+             
+
+                    <!-- <button class="boton-envio carrito-acciones-vaciar">CABA</button>
+                    <button class="boton-envio carrito-acciones-vaciar">GRAN BUENOS AIRES</button>
+                    <button class="boton-envio carrito-acciones-vaciar">INTERIOR</button>
+                    <div class="carrito-acciones-total">
+                    <p>Total: </p>
+                    <p id="total-envio"></p> -->
+                    </div>
+                </div>
 
             </div>
         </main>
     </div>
+    <script src="./js/carrito.js">
+    </script>
     </body>
     </html>
