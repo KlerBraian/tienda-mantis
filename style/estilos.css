@@ -20,7 +20,7 @@ a{
 }
 
 body {
-    background-color: #064980
+    background-color: #064980;
 }
 
 .container {
@@ -72,7 +72,7 @@ main {
     background-image: url(../img/logofondo.jpeg);
     background-size: cover;
     aspect-ratio: 1/1;
-    margin: 1rem;
+    
     margin-left: 0;
     padding: 2rem;
     padding-bottom: 5rem;
@@ -158,7 +158,7 @@ main {
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    background-color: #064980;
+    background-color: #000636;
 }
 .menu-nav-ul {
     display: flex;
@@ -168,7 +168,7 @@ main {
 .menu-nav-ul li {
     margin-inline: 1rem;
     cursor: pointer;
-    color: #064980;
+    color: #060808;
     font-weight: bold;
     font-size: 1.2rem;
     background-color: gray;
@@ -351,3 +351,11 @@ main {
   .show {display:block;
 }
 
+
+
+
+
+.m {
+    display: flex;
+    justify-content: center;
+}

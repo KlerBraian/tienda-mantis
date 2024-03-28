@@ -38,18 +38,20 @@
                 <div id="carrito-productos" class="carrito-productos disabled">  
                 </div>
                 <div id="carrito-acciones" class="carrito-acciones disabled">
+                    <div class="carrito-acciones-izquierda">
+                        <button id="carrito-acciones-vaciar" class="carrito-acciones-vaciar">Vaciar carrito</button>
+                    </div>
                     <div id="envio" class="dropdown disabled ">
                         <button id="dropbtn" class="dropbtn">Seleccionar Opción <i class="bi bi-arrow-down-circle"></i></button>
                         <div id= "desplegado" class="dropdown-content">
                           <a class="opcion">CABA</a>
                           <a class="opcion">Gran Buenos Aires</a>
                           <a class="opcion">Interior</a>
-                          <a class="opcion">Sin envio</a>
+                          <a class="opcion">Retiro en tienda</a>
+                          <a id= "boton-volver" class="opcion">Volver</a>
                         </div>
                     </div>
-                    <div class="carrito-acciones-izquierda">
-                        <button id="carrito-acciones-vaciar" class="carrito-acciones-vaciar">Vaciar carrito</button>
-                    </div>
+                    <p class="carrito-acciones-vaciar disabled" id="costo">Costo de envio:</p>
                     <div class="carrito-acciones-derecha">
                         <div class="carrito-acciones-total">
                             <p>Total: </p>
@@ -58,17 +60,7 @@
                         <button id="carrito-acciones-comprar" class="carrito-acciones-comprar">Comprar</button>
                     </div>
                 </div>
-                
                 <p id="carrito-comprado" class="carrito-comprado disabled">Muchas gracias por tu compra.🤟 </p>
-
-             
-
-                    <!-- <button class="boton-envio carrito-acciones-vaciar">CABA</button>
-                    <button class="boton-envio carrito-acciones-vaciar">GRAN BUENOS AIRES</button>
-                    <button class="boton-envio carrito-acciones-vaciar">INTERIOR</button>
-                    <div class="carrito-acciones-total">
-                    <p>Total: </p>
-                    <p id="total-envio"></p> -->
                     </div>
                 </div>
 

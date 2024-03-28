@@ -33,9 +33,9 @@ function cargarCarrito() {
                 <div class="carrito-producto-cantidad">
                     <small>Cantidad</small>
                     <div class="carrito-opciones-cantidad">
-                    <button>- </button>
-                    <p>${producto.cantidad}</p>
-                    <button> +</button>
+                    <button id="${producto.id}" class="cantidad-resta">- </button>
+                    <p> ${producto.cantidad} </p>
+                    <button id="${producto.id}" class="cantidad-suma"> +</button>
                     </div>
                 </div>
                 <div class="carrito-producto-precio">
@@ -51,7 +51,7 @@ function cargarCarrito() {
     
             contenedorCarritoProductos.append(div);
         })
-    
+    actualizarBotonesCantidad();
     actualizarBotonesEliminar();
     actualizarTotal();
 	
@@ -72,6 +72,8 @@ function actualizarBotonesEliminar() {
     botonesEliminar.forEach(boton => {
         boton.addEventListener("click", eliminarDelCarrito);
     });
+
+    console.log(botonesEliminar)
 }
 
 function eliminarDelCarrito(e) {
@@ -94,7 +96,7 @@ function vaciarCarrito() {
 
 
 function actualizarTotal() {
-    const montoTotal = productosEnCarrito.reduce((acc, producto) => acc + producto.subtotal, 0);
+    const montoTotal = productosEnCarrito.reduce((acc, producto) => acc + (producto.cantidad * producto.precio), 0);
     contenedorTotal.innerText = `$${montoTotal}`;
 }
 
@@ -111,28 +113,69 @@ function comprarCarrito() {
 
 }
 
+
+
+
+
     botonEnvio = document.querySelector("#boton-envio");
     botonEnvio.addEventListener("click", mostrarEnvio);
 
     botonDesplegable = document.querySelector("#dropbtn");
-    botonDesplegable.addEventListener("click", toggleDropdown);
+    botonDesplegable.addEventListener("click", menuDesplegable);
 
     menuDesplegado= document.querySelector("#desplegado");
 
     opcionesEnvio= document.querySelector("#envio");
 
-
     opcionSeleccionada = document.querySelectorAll(".opcion");
     opcionSeleccionada.forEach (opcion => opcion.addEventListener("click", function(e) {
         seleccionaOpcion(e.target.innerText); 
     }));
+
+    montoEnvio = document.querySelector("#costo");
+    
+    const botonVolver = document.querySelector("#boton-volver");
+    botonVolver.addEventListener("click", volverAModificarCantidades);
+
+    function volverAModificarCantidades(){
+        botonesCambiarCantidadResta.forEach(boton => boton.disabled = false);
+        botonesCambiarCantidadSuma.forEach(boton => boton.disabled = false);
+        opcionesEnvio.classList.add("disabled");
+        montoEnvio.classList.add("disabled");
+    }
+
+
+    function mostrarEnvio() {
+        opcionesEnvio.classList.remove("disabled");
+        montoEnvio.classList.remove("disabled");
+        // Deshabilita los botones de cantidad
+        botonesCambiarCantidadResta.forEach(boton => boton.disabled = true);
+        botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true);
+    }
+    
+    function seleccionaOpcion(opcion) {
+        botonDesplegable.innerHTML = `<button id="dropbtn" class="dropbtn">${opcion} <i class="bi bi-arrow-down-circle"></i></button>`;
+        desplegado.classList.remove("show");
+        opcionesEnvio.classList.remove("disabled"); 
+        calcularEnvio(opcion);
+    }
+    
+    function calcularEnvio(opcionElegida) {
+        costoSeleccionado = costoEnvio.find(opcion => opcion.id === opcionElegida);
+        if(costoSeleccionado){
+            let montoTotal = productosEnCarrito.reduce((acc, producto) => acc + producto.subtotal, 0); 
+            nuevoTotal =  montoTotal + costoSeleccionado.costo;
+            montoEnvio.innerText = `Costo de envío: $${costoSeleccionado.costo}`;
+            contenedorTotal.innerText = `$${nuevoTotal}`;
+            // Deshabilita los botones de cantidad
+            botonesCambiarCantidadResta.forEach(boton => boton.disabled = true);
+            botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true);
+        }
+    }
     
 
-
- function mostrarEnvio() {
-    opcionesEnvio.classList.remove("disabled");
- }   
-function toggleDropdown() {
+   
+function menuDesplegable() {
     desplegado.classList.toggle("show");
   }
 
@@ -150,32 +193,44 @@ function toggleDropdown() {
         costo: 2500
     },
     {
-        id : "Sin envio",
+        id : "Retiro en tienda",
         costo: 0
     }
   ];  
 
 
-  function seleccionaOpcion(opcion) {
-        botonDesplegable.innerText = opcion;
-        desplegado.classList.remove("show");
-        opcionesEnvio.classList.remove("disabled"); 
-        calcularEnvio(opcion);
-    }
+  function actualizarBotonesCantidad() {
+    botonesCambiarCantidadResta = document.querySelectorAll(".cantidad-resta");
+    
+    botonesCambiarCantidadSuma = document.querySelectorAll(".cantidad-suma");
+    
+    botonesCambiarCantidadResta.forEach(boton => {
+        boton.addEventListener("click", cambiarCantidad);
+    });
+    
+    botonesCambiarCantidadSuma.forEach(boton => {
+        boton.addEventListener("click", cambiarCantidad);
+    });
+}
 
-
-
-
-  function calcularEnvio (opcionElegida) {
-    costoSeleccionado = costoEnvio.find(opcion => opcion.id === opcionElegida);
-    if(costoSeleccionado){
-        let montoTotal = productosEnCarrito.reduce((acc, producto) => acc + producto.subtotal, 0); 
-        nuevoTotal =  montoTotal + costoSeleccionado.costo;
-        contenedorTotal.innerText = `$${nuevoTotal}`
-    }
-  
-  }
-
+function cambiarCantidad(e){
+    const classBoton = e.currentTarget.classList;
+    const idBoton = e.currentTarget.id;
+    const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+    
+    if (classBoton.contains('cantidad-resta')) {
+        if(productosEnCarrito[index].cantidad > 1) {
+            productosEnCarrito[index].cantidad--;
+            actualizarTotal();
+        }
+    } else {
+        productosEnCarrito[index].cantidad++;
+    actualizarTotal();
+}
+    productosEnCarrito[index].subtotal = productosEnCarrito[index].cantidad * productosEnCarrito[index].precio;
+    cargarCarrito();
+    localStorage.setItem("productos-carrito", JSON.stringify(productosEnCarrito));
+}
 
 
 
