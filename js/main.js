@@ -4,160 +4,140 @@ const prodArray = [
         titulo:"🎸 Guitarra Dean Mustaine Signature",
         imagen:"./img/guitarras/guitarra-1-dean.jpg",
         precio: 180000,
-        categoria:"Guitarras",
-        stock: 5
+        categoria:"Guitarras"
     },
     {
         id:"guitarra-2",
         titulo:"🎸 Guitarra Gibson ES35",
         imagen: "./img/guitarras/guitarra-2-gibson.jpg",
         precio: 130000,
-        categoria:"Guitarras",stock: 5
-
+        categoria:"Guitarras"
     },   
     {
         id:"guitarra-3",
         titulo:"🎸 Guitarra Fender Stratocaster Standard",
         imagen: "./img/guitarras/guitarra-3-fender.jpg",
         precio: 120000,
-        categoria:"Guitarras",
-        stock: 5
+        categoria:"Guitarras"
     },   
     {
         id:"guitarra-4",
         titulo:"🎸 Guitarra Gibson Lespaul Red Signature",
         imagen: "./img/guitarras/guitarra-4-lespaul.jpg",
         precio: 130000,
-        categoria:"Guitarras",
-        stock: 5
+        categoria:"Guitarras"
     },  
     {
         id:"guitarra-5",
         titulo:"🎸 Guitarra Gibson Firebird",
         imagen:"./img/guitarras/guitarra-5-firebird.jpg",
         precio: 150000,
-        categoria:"Guitarras",
-        stock: 5
+        categoria:"Guitarras"
     },   
     {
         id:"bajo-1",
         titulo:"🎻 Bajo Gibson LesPaul 2015",
         imagen: "./img/bajos/bajo-1-gibson.jpg",
         precio: 120000,
-        categoria:"Bajos",
-        stock: 5
+        categoria:"Bajos"
     },   
     {
         id:"bajo-2",
         titulo:"🎻 Bajo Spector Legend STD ",
         imagen:"./img/bajos/bajo-2-spector.jpg",
         precio: 160000,
-        categoria:"Bajos",
-        stock: 5
+        categoria:"Bajos"
     },  
      {
         id:"bajo-3",
         titulo: "🎻 Bajo Gibson Midtown",
         imagen:"./img/bajos/bajo-3-gibson.jpg",
         precio: 140000,
-        categoria:"Bajos",
-        stock: 5
+        categoria:"Bajos"
     },   
     {
         id:"bajo-4",
         titulo:"🎻 Bajo Spector NS Pulse",
         imagen:"./img/bajos/bajo-4-spector.jpg",
         precio: 180000,
-        categoria:"Bajos",
-        stock: 5
+        categoria:"Bajos"
     },   
     {
         id:"bajo-5",
         titulo: "🎻 Bajo Fender American",
         imagen:"./img/bajos/bajo-5-fender.jpg",
         precio: 150000,
-        categoria:"Bajos",
-        stock: 5
+        categoria:"Bajos"
     },   
     {
         id:"pedales-1",
         titulo: "🎛️ Pedal Vox Wah",
         imagen:"./img/pedales/pedal-1-vox.jpg",
         precio: 80000,
-        categoria:"Pedales",
-        stock: 5
+        categoria:"Pedales"
     },  
     {
         id:"pedales-2",
         titulo:"🎛️ Pedal Hummingverb2 Reverb",
         imagen:"./img/pedales/pedal-2-hummingverb.jpg",
         precio:60000,
-        categoria:"Pedales",
-        stock: 5
+        categoria:"Pedales"
     },   
     {
         id:"pedales-3",
         titulo:"🎛️ Pedal British Drive",
         imagen: "./img/pedales/pedal-3-britishdrive.jpg",
         precio: 65000,
-        categoria:"Pedales",
-        stock: 5
+        categoria:"Pedales"
     },   
     {
         id:"pedales-4",
         titulo:"🎛️ Pedal Boss Distortion Ds2",
         imagen:"./img/pedales/pedal-4-distortion.jpg",
         precio: 50000,
-        categoria:"Pedales",
-        stock: 5
+        categoria:"Pedales"
     },   
     {
         id:"pedales-5",
         titulo: "🎛️ Pedal Whammy",
         imagen:"./img/pedales/pedal-5-whammy.jpg",
         precio: 68000,
-        categoria:"Pedales",
-        stock: 5
+        categoria:"Pedales"
     },   
     {
         id:"accesorios-1",
         titulo:"🔌 Afinador Analogico",
         imagen:"./img/accesorios/acces-1-afinador.jpg",
         precio: 15000,
-        categoria:"Accesorios",
-        stock: 5
+        categoria:"Accesorios"
     },   
     {
         id:"accesorios-2",
         titulo: "🔌 Correa Cuero",
         imagen:"./img/accesorios/acces-2-correa.jpg",
         precio: 7000,
-        categoria:"Accesorios",
-        stock: 5
+        categoria:"Accesorios"
     },   
     {
         id:"accesorios-3",
         titulo: "🔌 Cable 7M",
         imagen:"./img/accesorios/acces-3-cable.jpg",
         precio: 12000,
-        categoria:"Accesorios",
-        stock: 5
+        categoria:"Accesorios"
     },   
     {
         id:"accesorios-4",
         titulo:"🔌 Capotraste Regulable",
         imagen:"./img/accesorios/acces-4-capotraste.jpg",
         precio: 6000,
-        categoria:"Accesorios",
-        stock: 5
+        categoria:"Accesorios"
     },   
     {
         id:"accesorios-5",
         titulo:"🔌 Pua Fender Medium",
         imagen:"./img/accesorios/acces-5-puas.jpg",
         precio: 2000,
-        categoria:"Accesorios",
-        stock: 5
+        categoria:"Accesorios"
     }
 ]
 const categorias = ["Guitarras", "Bajos", "Pedales", "Accesorios"];
@@ -172,6 +152,7 @@ const tituloPrincipal = document.querySelector("#titulo-principal");
 const numeroCarrito = document.querySelector(".numero-carrito");
 
 function cargarProductos (productosElegidos){
+
     contenedorProductos.innerHTML = ''
 
     productosElegidos.forEach(producto => {
@@ -249,25 +230,23 @@ function agregarAlCarrito(e) {
 
             const idBoton = e.currentTarget.id;
             const productoAgregado = prodArray.find(producto => producto.id === idBoton);
-
-    
-                if(carrito.some(producto => producto.id === idBoton)) {
-                    const index = carrito.findIndex(producto => producto.id === idBoton);
-                    carrito[index].cantidad++;
-                    carrito[index].subtotal += carrito[index].precio;
         
-                    } else {
-                    productoAgregado.subtotal = productoAgregado.precio;
-                    productoAgregado.cantidad = 1;
-                    carrito.push(productoAgregado);
-            }
-     
-        actualizarNumeroCarrito();
+            if(carrito.some(producto => producto.id === idBoton)) {
+            const index = carrito.findIndex(producto => producto.id === idBoton);
+            carrito[index].cantidad++;
+            carrito[index].subtotal += carrito[index].precio;
 
-        localStorage.setItem("productos-carrito", JSON.stringify(carrito));
+            } else {
+            productoAgregado.subtotal = productoAgregado.precio;
+            productoAgregado.cantidad = 1;
+            carrito.push(productoAgregado);
+}
 
-} 
-    
+actualizarNumeroCarrito();
+
+localStorage.setItem("productos-carrito", JSON.stringify(carrito));
+
+}
 
                  /*  FUNCION ACTUALIZAR NUMERO DE PROD CARRITO*/
 
@@ -275,4 +254,3 @@ function actualizarNumeroCarrito() {
 let nuevoNumero = carrito.reduce((acc, producto) => acc + producto.cantidad, 0);
 numeroCarrito.innerText = nuevoNumero;
 }
-
