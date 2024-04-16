@@ -9,7 +9,7 @@ const botonVaciar = document.querySelector("#carrito-boton-vaciar");
 const contenedorTotal = document.querySelector("#total");
 const botonComprar = document.querySelector("#carrito-boton-comprar");
 
-                //                                                          CARGAR PRODUCTOS DEL CARRITO 
+                //                                                          CARGAR PRODUCTOS DEL CARRITO
 
 
 function cargarCarrito() {
@@ -19,7 +19,7 @@ function cargarCarrito() {
         contenedorCarritoProductos.classList.remove("disabled");
         contenedorCarritoAcciones.classList.remove("disabled");
         contenedorCarritoComprado.classList.add("disabled");
-    
+
         contenedorCarritoProductos.innerHTML = "";
         productosEnCarrito.forEach(producto => {
 
@@ -49,13 +49,13 @@ function cargarCarrito() {
                 </div>
                 <button class="carrito-producto-eliminar" id="${producto.id}"><i class="bi bi-trash-fill"></i></button>
             `;
-    
+
             contenedorCarritoProductos.append(div);
         })
     actualizarBotonesCantidad();
     actualizarBotonesEliminar();
     actualizarTotal();
-	
+
     } else {
         contenedorCarritoVacio.classList.remove("disabled");
         contenedorCarritoProductos.classList.add("disabled");
@@ -78,27 +78,47 @@ function actualizarBotonesEliminar() {
     });
 
 }
- 
+
 //                                                                          ELIMAR PRODUCTOS AGREGADOS
 
 function eliminarDelCarrito(e) {
     const idBoton = e.currentTarget.id;
     const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
-    
+
     productosEnCarrito.splice(index, 1);
     cargarCarrito();
-
+    
     localStorage.setItem("productos-carrito", JSON.stringify(productosEnCarrito));
 
     opcionesEnvio.classList.add("disabled");
     desplegado.classList.remove("show");
     montoEnvio.classList.add("disabled")
     montoEnvio.innerText = `Costo de envío:`;
+   
 }
 
                              //                                                  VACIAR EL CARRITO
 
-botonVaciar.addEventListener("click", vaciarCarrito);
+botonVaciar.addEventListener("click", ()=> Swal.fire({
+    title: "Estas seguro que quieres vaciar el carrito?",
+    icon: "question",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, vaciar carrito",
+    cancelButtonText: "No, volver al carrito"
+  }).then((result) => {
+    if (result.isConfirmed) {
+        vaciarCarrito();
+      Swal.fire({
+        title: "El carrito fue vaciado",
+        icon: "success"
+      });
+    }
+  }));
+
+
+
 function vaciarCarrito() {
  productosEnCarrito.length = 0
  localStorage.setItem('productos-carrito', JSON.stringify(productosEnCarrito));
@@ -115,12 +135,29 @@ function actualizarTotal() {
 //                                                                                  CONFIRMAR COMPRA
 
 
-botonComprar.addEventListener("click", comprarCarrito);
+botonComprar.addEventListener("click", ()=> Swal.fire({
+    title: "Desea confirmar la compra?",
+    icon: "question",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Confirmar",
+    cancelButtonText: "Volver"
+  }).then((result) => {
+    if (result.isConfirmed) {
+        comprarCarrito();
+      Swal.fire({
+        title: "Muchas gracias por tu compra",
+        icon: "success"
+      });
+    }
+  }));
+
 function comprarCarrito() {
 
     productosEnCarrito.length = 0;
     localStorage.setItem("productos-carrito", JSON.stringify(productosEnCarrito));
-    
+
     contenedorCarritoVacio.classList.add("disabled");
     contenedorCarritoProductos.classList.add("disabled");
     contenedorCarritoAcciones.classList.add("disabled");
@@ -128,7 +165,8 @@ function comprarCarrito() {
 
 }
 
-//                                                                        CALCULAR COSTO DE ENVIO
+//                                                                        ASIGNACION DE BOTONES
+
 
     botonEnvio = document.querySelector("#boton-envio");
     botonEnvio.addEventListener("click", mostrarEnvio);
@@ -142,21 +180,21 @@ function comprarCarrito() {
 
     opcionSeleccionada = document.querySelectorAll(".opcion");
     opcionSeleccionada.forEach (opcion => opcion.addEventListener("click", function(e) {
-        seleccionaOpcion(e.target.innerText); 
+        seleccionaOpcion(e.target.innerText);
     }));
 
     montoEnvio = document.querySelector("#costo");
-    
+
     const botonVolver = document.querySelector("#boton-volver");
     botonVolver.addEventListener("click", volverAModificarCantidades);
-    
+
     let opcionSelec = null; // Variable global para almacenar la opción seleccionada
 
 
 
                                                  //MODIFICAR CANTIDADES DESDE EL CARRITO
 
-    
+
 function volverAModificarCantidades(){
     botonesCambiarCantidadResta.forEach(boton => boton.disabled = false);
     botonesCambiarCantidadSuma.forEach(boton => boton.disabled = false);
@@ -179,7 +217,7 @@ function mostrarEnvio() {
     botonesCambiarCantidadResta.forEach(boton => boton.disabled = true);
     botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true);
 }
-   
+
 
 
                                                                 // MOSTRAR OPCIONES DE ENVIO
@@ -190,7 +228,12 @@ function seleccionaOpcion(opcion) {
         opcionSelec = opcion;
         botonDesplegable.innerHTML = `<button id="dropbtn" class="dropbtn">${opcion} <i class="bi bi-arrow-down-circle"></i></button>`;
         desplegado.classList.remove("show");
-        opcionesEnvio.classList.remove("disabled"); 
+        opcionesEnvio.classList.remove("disabled");
+        // opcionSelec && (
+        //     calcularEnvio(opcion);
+        //     botonDesplegable.classList.remove("active")
+        // );
+
         if (opcionSelec) {
             calcularEnvio(opcion);
             botonDesplegable.classList.remove("active")
@@ -202,10 +245,28 @@ function seleccionaOpcion(opcion) {
         //                                                             CALCULAR ENVIO
 
 
+fetch ("/json/datos.json")
+    .then((resp)  => resp.json())    
+    .then((data) => {
+    costoEnvio = [...data[21]];
+    calcularEnvio(costoEnvio);})
+
+
 function calcularEnvio(opcionElegida) {
     costoSeleccionado = costoEnvio.find(opcion => opcion.id === opcionElegida);
+    // costoSeleccionado && (
+    //     let montoTotal = productosEnCarrito.reduce((acc, producto) => acc + producto.subtotal, 0);
+    //     nuevoTotal =  montoTotal + costoSeleccionado.costo;
+    //     montoEnvio.innerText = `Costo de envío: $${costoSeleccionado.costo}`;
+    //     contenedorTotal.innerText = `$${nuevoTotal}`;
+    //     // Deshabilita los botones de cantidad
+    //     botonesCambiarCantidadResta.forEach(boton => boton.disabled = true);
+    //     botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true);
+    //     );
+
+
     if(costoSeleccionado){
-        let montoTotal = productosEnCarrito.reduce((acc, producto) => acc + producto.subtotal, 0); 
+        let montoTotal = productosEnCarrito.reduce((acc, producto) => acc + producto.subtotal, 0);
         nuevoTotal =  montoTotal + costoSeleccionado.costo;
         montoEnvio.innerText = `Costo de envío: $${costoSeleccionado.costo}`;
         contenedorTotal.innerText = `$${nuevoTotal}`;
@@ -213,10 +274,8 @@ function calcularEnvio(opcionElegida) {
         botonesCambiarCantidadResta.forEach(boton => boton.disabled = true);
         botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true);
        }
-}
 
-
-
+    }
 //                                                                  MENU DESPLEGABLE
 
 function menuDesplegable() {
@@ -226,55 +285,40 @@ function menuDesplegable() {
 
 
 
-                                                                 //ARRAY DE COSTO DE ENVIO
 
-costoEnvio = [
-    {
-        id: "CABA",
-        costo: 1500
-    }  ,
-    {
-        id: "Gran Buenos Aires",
-        costo: 2000
-    } , 
-    {
-        id: "Interior",
-        costo: 2500
-    },
-    {
-        id : "Retiro en tienda",
-        costo: 0
-    },
-    {
-        id : "Volver",
-        costo: 0
-    }
-  ];  
-
-
-                                                                           // HABILITAR LOS BOTONES DE CANTIDAD
+                                                               // HABILITAR LOS BOTONES DE CANTIDAD
 
 function actualizarBotonesCantidad() {
     botonesCambiarCantidadResta = document.querySelectorAll(".cantidad-resta");
-    
+
     botonesCambiarCantidadSuma = document.querySelectorAll(".cantidad-suma");
-    
+
     botonesCambiarCantidadResta.forEach(boton => {
         boton.addEventListener("click", cambiarCantidad);
     });
-    
+
     botonesCambiarCantidadSuma.forEach(boton => {
         boton.addEventListener("click", cambiarCantidad);
     });
 }
 
-                                                              // CAMBIAR LAS CANTIDADES Y ACTUALIZAR LOS TOTALES
+                                                       // CAMBIAR LAS CANTIDADES Y ACTUALIZAR LOS TOTALES
 
 function cambiarCantidad(e){
     const classBoton = e.currentTarget.classList;
     const idBoton = e.currentTarget.id;
     const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
     
+    
+//     classBoton.contains('cantidad-resta') ? 
+//         productosEnCarrito[index].cantidad > 1 && (
+//             productosEnCarrito[index].cantidad--;
+//             actualizarTotal()
+//         );
+//     : productosEnCarrito[index].cantidad++;
+//       actualizarTotal();
+// }
+
     if (classBoton.contains('cantidad-resta')) {
         if(productosEnCarrito[index].cantidad > 1) {
             productosEnCarrito[index].cantidad--;
@@ -291,65 +335,3 @@ function cambiarCantidad(e){
 
 
 
-
-
-
-
-// const botonDescuento = document.querySelector("#boton-descuento");
-// const solapaDescuento = document.querySelector(".solapa-descuento")
-// botonDescuento.addEventListener("click", ()=> { 
-//  solapaDescuento.classList.remove("disabled");
-//  botonesCambiarCantidadResta.forEach(boton => boton.disabled = true);
-//  botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true);
-// })
-
-// let descuentoAplicado = localStorage.getItem('descuentoAplicado') === 'true';
-// let totalConDescuento = parseFloat(localStorage.getItem('totalConDescuento')) || null;
-
-// // Si no hay ningún valor guardado en localStorage para el total con descuento, lo establecemos en null
-// // Esto indica que aún no se ha calculado el total con descuento
-// if (totalConDescuento === null) {
-//     totalConDescuento = null;
-// }
-
-// const codigoAplicado = document.querySelector(".cupon-descuento");
-// const codigoDescuento = document.querySelector(".boton-aplicar-descuento");
-
-// // Si el total con descuento ya ha sido calculado, actualizamos la interfaz con ese valor
-// if (totalConDescuento !== null) {
-//     contenedorTotal.innerText = `$${totalConDescuento}`;
-// }
-
-// aplicarDescuento();
-
-// function aplicarDescuento() {
-//     const descuento = 0.1;
-
-//     codigoDescuento.addEventListener("click", () => {
-//         const codigoIngresado = codigoAplicado.value.toLowerCase(); // Obtenemos el valor del input y lo convertimos a minúsculas
-//         if (!descuentoAplicado) {
-//             if (codigoIngresado === "mantis10") {
-//                 let montoTotal = productosEnCarrito.reduce((acc, producto) => acc + (producto.cantidad * producto.precio), 0);
-//                 let nuevoTotal = montoTotal * (1 - descuento); // Aplicamos el descuento al monto total
-//                 contenedorTotal.innerText = `$${nuevoTotal}`;
-//                 localStorage.setItem('descuentoAplicado', true);
-//                 localStorage.setItem('totalConDescuento', nuevoTotal); // Guardamos el total con descuento en localStorage
-//                 codigoAplicado.value = ""; // Limpiamos el contenido del input
-//                 codigoAplicado.setAttribute("placeholder", "Código de descuento");
-//                 alert("Su cupón ha sido aplicado, gracias");
-//             } else {
-//                 alert("Código erróneo");
-//                 codigoAplicado.value = ""; 
-//                 codigoAplicado.setAttribute("placeholder", "Código de descuento");
-//             }
-//         } else {
-//             if (codigoIngresado === "mantis10") {
-//                 alert("Este cupón ya ha sido utilizado");
-//             } else {
-//                 alert("Código erróneo");
-//             }
-//             codigoAplicado.value = ""; 
-//             codigoAplicado.setAttribute("placeholder", "Código de descuento");
-//         }
-//     });
-// }

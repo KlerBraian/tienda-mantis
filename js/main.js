@@ -1,147 +1,8 @@
-const prodArray = [
-    {
-        id:"guitarra-1",
-        titulo:"🎸 Guitarra Dean Mustaine Signature",
-        imagen:"./img/guitarras/guitarra-1-dean.jpg",
-        precio: 180000,
-        categoria:"Guitarras"
-    },
-    {
-        id:"guitarra-2",
-        titulo:"🎸 Guitarra Gibson ES35",
-        imagen: "./img/guitarras/guitarra-2-gibson.jpg",
-        precio: 130000,
-        categoria:"Guitarras"
-    },   
-    {
-        id:"guitarra-3",
-        titulo:"🎸 Guitarra Fender Stratocaster Standard",
-        imagen: "./img/guitarras/guitarra-3-fender.jpg",
-        precio: 120000,
-        categoria:"Guitarras"
-    },   
-    {
-        id:"guitarra-4",
-        titulo:"🎸 Guitarra Gibson Lespaul Red Signature",
-        imagen: "./img/guitarras/guitarra-4-lespaul.jpg",
-        precio: 130000,
-        categoria:"Guitarras"
-    },  
-    {
-        id:"guitarra-5",
-        titulo:"🎸 Guitarra Gibson Firebird",
-        imagen:"./img/guitarras/guitarra-5-firebird.jpg",
-        precio: 150000,
-        categoria:"Guitarras"
-    },   
-    {
-        id:"bajo-1",
-        titulo:"🎻 Bajo Gibson LesPaul 2015",
-        imagen: "./img/bajos/bajo-1-gibson.jpg",
-        precio: 120000,
-        categoria:"Bajos"
-    },   
-    {
-        id:"bajo-2",
-        titulo:"🎻 Bajo Spector Legend STD ",
-        imagen:"./img/bajos/bajo-2-spector.jpg",
-        precio: 160000,
-        categoria:"Bajos"
-    },  
-     {
-        id:"bajo-3",
-        titulo: "🎻 Bajo Gibson Midtown",
-        imagen:"./img/bajos/bajo-3-gibson.jpg",
-        precio: 140000,
-        categoria:"Bajos"
-    },   
-    {
-        id:"bajo-4",
-        titulo:"🎻 Bajo Spector NS Pulse",
-        imagen:"./img/bajos/bajo-4-spector.jpg",
-        precio: 180000,
-        categoria:"Bajos"
-    },   
-    {
-        id:"bajo-5",
-        titulo: "🎻 Bajo Fender American",
-        imagen:"./img/bajos/bajo-5-fender.jpg",
-        precio: 150000,
-        categoria:"Bajos"
-    },   
-    {
-        id:"pedales-1",
-        titulo: "🎛️ Pedal Vox Wah",
-        imagen:"./img/pedales/pedal-1-vox.jpg",
-        precio: 80000,
-        categoria:"Pedales"
-    },  
-    {
-        id:"pedales-2",
-        titulo:"🎛️ Pedal Hummingverb2 Reverb",
-        imagen:"./img/pedales/pedal-2-hummingverb.jpg",
-        precio:60000,
-        categoria:"Pedales"
-    },   
-    {
-        id:"pedales-3",
-        titulo:"🎛️ Pedal British Drive",
-        imagen: "./img/pedales/pedal-3-britishdrive.jpg",
-        precio: 65000,
-        categoria:"Pedales"
-    },   
-    {
-        id:"pedales-4",
-        titulo:"🎛️ Pedal Boss Distortion Ds2",
-        imagen:"./img/pedales/pedal-4-distortion.jpg",
-        precio: 50000,
-        categoria:"Pedales"
-    },   
-    {
-        id:"pedales-5",
-        titulo: "🎛️ Pedal Whammy",
-        imagen:"./img/pedales/pedal-5-whammy.jpg",
-        precio: 68000,
-        categoria:"Pedales"
-    },   
-    {
-        id:"accesorios-1",
-        titulo:"🔌 Afinador Analogico",
-        imagen:"./img/accesorios/acces-1-afinador.jpg",
-        precio: 15000,
-        categoria:"Accesorios"
-    },   
-    {
-        id:"accesorios-2",
-        titulo: "🔌 Correa Cuero",
-        imagen:"./img/accesorios/acces-2-correa.jpg",
-        precio: 7000,
-        categoria:"Accesorios"
-    },   
-    {
-        id:"accesorios-3",
-        titulo: "🔌 Cable 7M",
-        imagen:"./img/accesorios/acces-3-cable.jpg",
-        precio: 12000,
-        categoria:"Accesorios"
-    },   
-    {
-        id:"accesorios-4",
-        titulo:"🔌 Capotraste Regulable",
-        imagen:"./img/accesorios/acces-4-capotraste.jpg",
-        precio: 6000,
-        categoria:"Accesorios"
-    },   
-    {
-        id:"accesorios-5",
-        titulo:"🔌 Pua Fender Medium",
-        imagen:"./img/accesorios/acces-5-puas.jpg",
-        precio: 2000,
-        categoria:"Accesorios"
-    }
-]
-const categorias = ["Guitarras", "Bajos", "Pedales", "Accesorios"];
- 
+fetch ("/json/datos.json")
+.then((resp)  => resp.json())    
+.then((data) => {
+productos = [...data];
+cargarProductos(productos);})
 
             /*  FUNCION PARA CARGAR PRODUCTOS AL MAIN  (CATEGORIA O BUSQUEDA)*/
 
@@ -172,13 +33,15 @@ function cargarProductos (productosElegidos){
     actualizarBotonesAgregar();
 }
 
-cargarProductos(prodArray);
+
+
+// cargarProductos(prodArray);
 
                                   //MOSTRAR PRODUCTOS POR BARRA DE BUSQUEDA
 
 const inputBusqueda = document.querySelector("#buscar");
 inputBusqueda.addEventListener("input", () => {
-    const productosFiltrados = prodArray.filter (producto => producto.titulo.toLowerCase().includes(inputBusqueda.value.toLowerCase()));
+    const productosFiltrados = productos.filter (producto => producto.titulo.toLowerCase().includes(inputBusqueda.value.toLowerCase()));
     console.log(productosFiltrados)
     cargarProductos(productosFiltrados);
 })
@@ -189,14 +52,24 @@ botonCategorias.forEach(boton => {
     boton.addEventListener('click', (e) => {
         botonCategorias.forEach(boton => boton.classList.remove('active'));
         e.currentTarget.classList.add("active");
+
+        // e.currentTarget.id !== 'todos' ? 
+        //     const productoCategoria = prodArray.find(producto => producto.categoria === e.currentTarget.id);
+        //     tituloPrincipal.innerText = productoCategoria.categoria;
+        //     const productosBoton = prodArray.filter(producto => producto.categoria === e.currentTarget.id);
+        //     cargarProductos(productosBoton);
+        //    :   tituloPrincipal.innerText = "Todos los productos"
+        //     cargarProductos(prodArray)
+
+
         if(e.currentTarget.id !== 'todos') {
-            const productoCategoria = prodArray.find(producto => producto.categoria === e.currentTarget.id);
+            const productoCategoria = productos.find(producto => producto.categoria === e.currentTarget.id);
             tituloPrincipal.innerText = productoCategoria.categoria;
-            const productosBoton = prodArray.filter(producto => producto.categoria === e.currentTarget.id);
+            const productosBoton = productos.filter(producto => producto.categoria === e.currentTarget.id);
             cargarProductos(productosBoton);
         } else {
             tituloPrincipal.innerText = "Todos los productos"
-            cargarProductos(prodArray)
+            cargarProductos(productos)
         }
     })
 })
@@ -206,6 +79,13 @@ botonCategorias.forEach(boton => {
 
 let carrito;
 let productosCarritoLS = localStorage.getItem("productos-carrito");
+
+
+// productosCarritoLS ?
+//     carrito = JSON.parse(productosCarritoLS);
+//     actualizarNumeroCarrito();
+//    : carrito = [];
+
 
 if (productosCarritoLS) {
     carrito = JSON.parse(productosCarritoLS);
@@ -229,7 +109,19 @@ function actualizarBotonesAgregar() {
 function agregarAlCarrito(e) {
 
             const idBoton = e.currentTarget.id;
-            const productoAgregado = prodArray.find(producto => producto.id === idBoton);
+            const productoAgregado = productos.find(producto => producto.id === idBoton);
+
+
+    //         carrito.some(producto => producto.id === idBoton) ? 
+    //             const index = carrito.findIndex(producto => producto.id === idBoton);
+    //             carrito[index].cantidad++;
+    //             carrito[index].subtotal += carrito[index].precio;
+    
+    //             :
+    //             productoAgregado.subtotal = productoAgregado.precio;
+    //             productoAgregado.cantidad = 1;
+    //             carrito.push(productoAgregado);
+    // 
         
             if(carrito.some(producto => producto.id === idBoton)) {
             const index = carrito.findIndex(producto => producto.id === idBoton);
@@ -243,6 +135,21 @@ function agregarAlCarrito(e) {
 }
 
 actualizarNumeroCarrito();
+Toastify({
+    text: "Producto agregado",
+    duration: 2500,
+    gravity: "top", // `top` or `bottom`
+    position: "right", // `left`, `center` or `right`
+    style: { 
+      background: "linear-gradient(to right, #060808,#a00d0d,#060808)",
+      textShadow:  " 0 0 5px red, 0 0 5px red, 0 0 5px red, 0 0 5px red",
+      borderRadius: "0.5rem",
+      fontSize: "1.2rem"
+    },
+    offset: {
+        y: 70 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+      },
+  }).showToast();
 
 localStorage.setItem("productos-carrito", JSON.stringify(carrito));
 
