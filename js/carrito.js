@@ -229,32 +229,48 @@ function seleccionaOpcion(opcion) {
         botonDesplegable.innerHTML = `<button id="dropbtn" class="dropbtn">${opcion} <i class="bi bi-arrow-down-circle"></i></button>`;
         desplegado.classList.remove("show");
         opcionesEnvio.classList.remove("disabled");
-        // opcionSelec && (
-        //     calcularEnvio(opcion);
-        //     botonDesplegable.classList.remove("active")
-        // );
-
-        if (opcionSelec) {
-            calcularEnvio(opcion);
+        
+        opcionSelec && (
+            calcularEnvio(opcion),
             botonDesplegable.classList.remove("active")
-        }
-}
+        );
+    }
+//         if (opcionSelec) {
+//             calcularEnvio(opcion);
+//             botonDesplegable.classList.remove("active")
+//         }
+// }
 
 
 
         //                                                             CALCULAR ENVIO
 
 
-fetch ("/json/datos.json")
-    .then((resp)  => resp.json())    
-    .then((data) => {
+const pedirDatos = async() => {
+    const res = await fetch ("/json/datos.json")
+    const data = await res.json();
     costoEnvio = [...data[21]];
-    calcularEnvio(costoEnvio);})
+    }
+    
+    pedirDatos();
+
 
 
 function calcularEnvio(opcionElegida) {
+    let montoTotal = 0
     costoSeleccionado = costoEnvio.find(opcion => opcion.id === opcionElegida);
-    // costoSeleccionado && (
+    costoSeleccionado && (
+        montoTotal = productosEnCarrito.reduce((acc, producto) => acc + producto.subtotal, 0),
+        nuevoTotal =  montoTotal + costoSeleccionado.costo,
+        montoEnvio.innerText = `Costo de envío: $${costoSeleccionado.costo}`,
+        contenedorTotal.innerText = `$${nuevoTotal}`,
+        // Deshabilita los botones de cantidad
+        botonesCambiarCantidadResta.forEach(boton => boton.disabled = true),
+        botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true)
+        )
+
+
+    // if(costoSeleccionado){
     //     let montoTotal = productosEnCarrito.reduce((acc, producto) => acc + producto.subtotal, 0);
     //     nuevoTotal =  montoTotal + costoSeleccionado.costo;
     //     montoEnvio.innerText = `Costo de envío: $${costoSeleccionado.costo}`;
@@ -262,18 +278,7 @@ function calcularEnvio(opcionElegida) {
     //     // Deshabilita los botones de cantidad
     //     botonesCambiarCantidadResta.forEach(boton => boton.disabled = true);
     //     botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true);
-    //     );
-
-
-    if(costoSeleccionado){
-        let montoTotal = productosEnCarrito.reduce((acc, producto) => acc + producto.subtotal, 0);
-        nuevoTotal =  montoTotal + costoSeleccionado.costo;
-        montoEnvio.innerText = `Costo de envío: $${costoSeleccionado.costo}`;
-        contenedorTotal.innerText = `$${nuevoTotal}`;
-        // Deshabilita los botones de cantidad
-        botonesCambiarCantidadResta.forEach(boton => boton.disabled = true);
-        botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true);
-       }
+    //    }
 
     }
 //                                                                  MENU DESPLEGABLE
@@ -310,24 +315,22 @@ function cambiarCantidad(e){
     const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
     
     
-//     classBoton.contains('cantidad-resta') ? 
-//         productosEnCarrito[index].cantidad > 1 && (
-//             productosEnCarrito[index].cantidad--;
-//             actualizarTotal()
-//         );
-//     : productosEnCarrito[index].cantidad++;
-//       actualizarTotal();
-// }
+    classBoton.contains('cantidad-resta') ? 
+        productosEnCarrito[index].cantidad > 1 && (
+            productosEnCarrito[index].cantidad--,
+            actualizarTotal())  : productosEnCarrito[index].cantidad++,
+                                  actualizarTotal()
 
-    if (classBoton.contains('cantidad-resta')) {
-        if(productosEnCarrito[index].cantidad > 1) {
-            productosEnCarrito[index].cantidad--;
-            actualizarTotal();
-        }
-    } else {
-        productosEnCarrito[index].cantidad++;
-    actualizarTotal();
-}
+
+    // if (classBoton.contains('cantidad-resta')) {
+    //     if(productosEnCarrito[index].cantidad > 1) {
+    //         productosEnCarrito[index].cantidad--;
+    //         actualizarTotal();
+    //     }
+    // } else {
+    //     productosEnCarrito[index].cantidad++;
+    // actualizarTotal();
+// }
     productosEnCarrito[index].subtotal = productosEnCarrito[index].cantidad * productosEnCarrito[index].precio;
     cargarCarrito();
     localStorage.setItem("productos-carrito", JSON.stringify(productosEnCarrito));

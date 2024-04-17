@@ -35,8 +35,6 @@ function cargarProductos (productosElegidos){
 
 
 
-// cargarProductos(prodArray);
-
                                   //MOSTRAR PRODUCTOS POR BARRA DE BUSQUEDA
 
 const inputBusqueda = document.querySelector("#buscar");
@@ -53,13 +51,16 @@ botonCategorias.forEach(boton => {
         botonCategorias.forEach(boton => boton.classList.remove('active'));
         e.currentTarget.classList.add("active");
 
-        // e.currentTarget.id !== 'todos' ? 
-        //     const productoCategoria = prodArray.find(producto => producto.categoria === e.currentTarget.id);
-        //     tituloPrincipal.innerText = productoCategoria.categoria;
-        //     const productosBoton = prodArray.filter(producto => producto.categoria === e.currentTarget.id);
-        //     cargarProductos(productosBoton);
-        //    :   tituloPrincipal.innerText = "Todos los productos"
-        //     cargarProductos(prodArray)
+
+    //      e.currentTarget.id !== 'todos' ? (
+    //         const productoCategoria = productos.find(producto => producto.categoria === e.currentTarget.id),
+    //         tituloPrincipal.innerText = productoCategoria.categoria,
+    //         const productosBoton = productos.filter(producto => producto.categoria === e.currentTarget.id),
+    //         cargarProductos(productosBoton) 
+    // ) : (tituloPrincipal.innerText = "Todos los productos",
+    //     cargarProductos(productos)
+    // )
+        
 
 
         if(e.currentTarget.id !== 'todos') {
@@ -81,18 +82,18 @@ let carrito;
 let productosCarritoLS = localStorage.getItem("productos-carrito");
 
 
-// productosCarritoLS ?
+productosCarritoLS ? (
+    carrito = JSON.parse(productosCarritoLS),
+    actualizarNumeroCarrito()
+) : carrito = [];
+
+
+// if (productosCarritoLS) {
 //     carrito = JSON.parse(productosCarritoLS);
 //     actualizarNumeroCarrito();
-//    : carrito = [];
-
-
-if (productosCarritoLS) {
-    carrito = JSON.parse(productosCarritoLS);
-    actualizarNumeroCarrito();
-} else {
-    carrito = [];
-}
+// } else {
+//     carrito = [];
+// }
 
 
 function actualizarBotonesAgregar() {
@@ -110,18 +111,17 @@ function agregarAlCarrito(e) {
 
             const idBoton = e.currentTarget.id;
             const productoAgregado = productos.find(producto => producto.id === idBoton);
-
-
-    //         carrito.some(producto => producto.id === idBoton) ? 
-    //             const index = carrito.findIndex(producto => producto.id === idBoton);
-    //             carrito[index].cantidad++;
-    //             carrito[index].subtotal += carrito[index].precio;
     
-    //             :
-    //             productoAgregado.subtotal = productoAgregado.precio;
-    //             productoAgregado.cantidad = 1;
-    //             carrito.push(productoAgregado);
-    // 
+            //     const index = carrito.some(producto => producto.id === idBoton) ? ( 
+            //     index = carrito.findIndex(producto => producto.id === idBoton),
+            //     carrito[index].cantidad++,
+            //     carrito[index].subtotal += carrito[index].precio
+            // ) : (
+            //     productoAgregado.subtotal = productoAgregado.precio,
+            //     productoAgregado.cantidad = 1,
+            //     carrito.push(productoAgregado)
+            // );
+    
         
             if(carrito.some(producto => producto.id === idBoton)) {
             const index = carrito.findIndex(producto => producto.id === idBoton);
