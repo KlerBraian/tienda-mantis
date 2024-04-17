@@ -1,7 +1,8 @@
 fetch ("/json/datos.json")
 .then((resp)  => resp.json())    
 .then((data) => {
-productos = [...data];
+productos = [...data[0]];
+console.log(productos);
 cargarProductos(productos);})
 
             /*  FUNCION PARA CARGAR PRODUCTOS AL MAIN  (CATEGORIA O BUSQUEDA)*/
@@ -50,19 +51,6 @@ botonCategorias.forEach(boton => {
     boton.addEventListener('click', (e) => {
         botonCategorias.forEach(boton => boton.classList.remove('active'));
         e.currentTarget.classList.add("active");
-
-
-    //      e.currentTarget.id !== 'todos' ? (
-    //         const productoCategoria = productos.find(producto => producto.categoria === e.currentTarget.id),
-    //         tituloPrincipal.innerText = productoCategoria.categoria,
-    //         const productosBoton = productos.filter(producto => producto.categoria === e.currentTarget.id),
-    //         cargarProductos(productosBoton) 
-    // ) : (tituloPrincipal.innerText = "Todos los productos",
-    //     cargarProductos(productos)
-    // )
-        
-
-
         if(e.currentTarget.id !== 'todos') {
             const productoCategoria = productos.find(producto => producto.categoria === e.currentTarget.id);
             tituloPrincipal.innerText = productoCategoria.categoria;
@@ -110,19 +98,7 @@ function actualizarBotonesAgregar() {
 function agregarAlCarrito(e) {
 
             const idBoton = e.currentTarget.id;
-            const productoAgregado = productos.find(producto => producto.id === idBoton);
-    
-            //     const index = carrito.some(producto => producto.id === idBoton) ? ( 
-            //     index = carrito.findIndex(producto => producto.id === idBoton),
-            //     carrito[index].cantidad++,
-            //     carrito[index].subtotal += carrito[index].precio
-            // ) : (
-            //     productoAgregado.subtotal = productoAgregado.precio,
-            //     productoAgregado.cantidad = 1,
-            //     carrito.push(productoAgregado)
-            // );
-    
-        
+            const productoAgregado = productos.find(producto => producto.id === idBoton);      
             if(carrito.some(producto => producto.id === idBoton)) {
             const index = carrito.findIndex(producto => producto.id === idBoton);
             carrito[index].cantidad++;
