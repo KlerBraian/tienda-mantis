@@ -1,8 +1,7 @@
-fetch ("./json/datos.json")
+fetch ("/json/datos.json")
 .then((resp)  => resp.json())    
 .then((data) => {
 productos = [...data[0]];
-console.log(productos);
 cargarProductos(productos);})
 
                                          /*  FUNCION PARA CARGAR PRODUCTOS AL MAIN  (CATEGORIA O BUSQUEDA)*/
