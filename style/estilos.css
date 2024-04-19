@@ -233,7 +233,7 @@ main {
 
 
 
-                                    /* CARRITO */
+                                                                           /* CARRITO */
 
 .contenedor {
     display: grid;
@@ -310,8 +310,6 @@ aside {
     border: 0;
     font-size: 1rem;
 
-
-/*   carrito  */
 
 }
 .carrito-vacio{
@@ -425,7 +423,7 @@ aside {
 
 
 
-                /*  MENU DESPLEGABLE */
+                                                                                /*  MENU DESPLEGABLE */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -457,6 +455,7 @@ aside {
     border-bottom-right-radius: 0;
   }
   .dropdown-content {
+    height: auto;
     display: none;
     position: absolute;
     background-color: grey;
