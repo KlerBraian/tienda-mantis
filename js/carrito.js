@@ -9,12 +9,11 @@ const botonVaciar = document.querySelector("#carrito-boton-vaciar");
 const contenedorTotal = document.querySelector("#total");
 const botonComprar = document.querySelector("#carrito-boton-comprar");
 
-                //                                                          CARGAR PRODUCTOS DEL CARRITO
+                //                                                    CARGAR PRODUCTOS DEL CARRITO
 
 
 function cargarCarrito() {
     if (productosEnCarrito && productosEnCarrito.length > 0) {
-
         contenedorCarritoVacio.classList.add("disabled");
         contenedorCarritoProductos.classList.remove("disabled");
         contenedorCarritoAcciones.classList.remove("disabled");
@@ -22,7 +21,6 @@ function cargarCarrito() {
 
         contenedorCarritoProductos.innerHTML = "";
         productosEnCarrito.forEach(producto => {
-
             const div = document.createElement("div");
             div.classList.add("carrito-producto");
             div.innerHTML = `
@@ -51,6 +49,7 @@ function cargarCarrito() {
             `;
 
             contenedorCarritoProductos.append(div);
+
         })
     actualizarBotonesCantidad();
     actualizarBotonesEliminar();
@@ -68,33 +67,99 @@ function cargarCarrito() {
 cargarCarrito();
 
 
+//                                                                        ASIGNACION DE BOTONES
+
+
+botonEnvio = document.querySelector("#boton-envio");
+botonEnvio.addEventListener("click", mostrarEnvio);
+botonDesplegable = document.querySelector("#dropbtn");
+botonDesplegable.addEventListener("click", menuDesplegable);
+menuDesplegado= document.querySelector("#desplegado");
+opcionesEnvio= document.querySelector("#envio");
+opcionSeleccionada = document.querySelectorAll(".opcion");
+opcionSeleccionada.forEach (opcion => opcion.addEventListener("click", function(e) {
+    seleccionaOpcion(e.target.innerText);
+}));
+
+montoEnvio = document.querySelector("#costo");
+const botonVolver = document.querySelector("#boton-volver");
+botonVolver.addEventListener("click", volverAModificarCantidades);
+let opcionSelec = null; 
+
+
                     //                                              HABILITA LOS BOTONES PARA ELIMINAR PRODUCTOS
 
 function actualizarBotonesEliminar() {
     botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
-
     botonesEliminar.forEach(boton => {
         boton.addEventListener("click", eliminarDelCarrito);
     });
 
 }
 
+                                                                 // HABILITAR LOS BOTONES DE CANTIDAD
+
+
+function actualizarBotonesCantidad() {
+    botonesCambiarCantidadResta = document.querySelectorAll(".cantidad-resta");
+    botonesCambiarCantidadSuma = document.querySelectorAll(".cantidad-suma");
+                                                            
+    botonesCambiarCantidadResta.forEach(boton => {
+        boton.addEventListener("click", cambiarCantidad);
+    });
+                                                            
+    botonesCambiarCantidadSuma.forEach(boton => {
+        boton.addEventListener("click", cambiarCantidad);
+    });
+}
+
+
+//                                                                           ACTUALIZA EL TOTAL
+
+function actualizarTotal() {
+    const montoTotal = productosEnCarrito.reduce((acc, producto) => acc + (producto.cantidad * producto.precio), 0);
+    contenedorTotal.innerText = `$${montoTotal}`;
+}
+
+
+
+
 //                                                                          ELIMAR PRODUCTOS AGREGADOS
 
 function eliminarDelCarrito(e) {
     const idBoton = e.currentTarget.id;
     const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
-
-    productosEnCarrito.splice(index, 1);
-    cargarCarrito();
+    const productoEliminado = productosEnCarrito[index];
+ Swal.fire({ 
+        imageUrl: `${productoEliminado.imagen}`,
+        imageHeight: 300,
+        imageAlt: `${productoEliminado.titulo}`,
+        title: `¿Estás seguro que quieres eliminar ${productoEliminado.titulo} del carrito?`,
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "No,me arrepenti"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            productosEnCarrito.splice(index, 1);
+            localStorage.setItem("productos-carrito", JSON.stringify(productosEnCarrito));
+            cargarCarrito();
+            opcionesEnvio.classList.add("disabled");
+            desplegado.classList.remove("show");
+            montoEnvio.classList.add("disabled")
+            montoEnvio.innerText = `Costo de envío:`;
+            Swal.fire({
+                imageUrl: `${productoEliminado.imagen}`,
+                imageHeight: 300,
+                imageAlt: `${productoEliminado.titulo}`,
+                title: `El producto ${productoEliminado.titulo} fue eliminado del carrito`,
+                icon: "success"
+              });
+        }
+    });
     
-    localStorage.setItem("productos-carrito", JSON.stringify(productosEnCarrito));
-
-    opcionesEnvio.classList.add("disabled");
-    desplegado.classList.remove("show");
-    montoEnvio.classList.add("disabled")
-    montoEnvio.innerText = `Costo de envío:`;
-   
 }
 
                              //                                                  VACIAR EL CARRITO
@@ -117,22 +182,16 @@ botonVaciar.addEventListener("click", ()=> Swal.fire({
     }
   }));
 
-
-
 function vaciarCarrito() {
  productosEnCarrito.length = 0
  localStorage.setItem('productos-carrito', JSON.stringify(productosEnCarrito));
  cargarCarrito();
 }
 
-//                                                                           ACTUALIZA EL TOTAL
 
-function actualizarTotal() {
-    const montoTotal = productosEnCarrito.reduce((acc, producto) => acc + (producto.cantidad * producto.precio), 0);
-    contenedorTotal.innerText = `$${montoTotal}`;
-}
 
-//                                                                                  CONFIRMAR COMPRA
+
+//                                                                            CONFIRMAR COMPRA
 
 
 botonComprar.addEventListener("click", ()=> Swal.fire({
@@ -154,10 +213,8 @@ botonComprar.addEventListener("click", ()=> Swal.fire({
   }));
 
 function comprarCarrito() {
-
     productosEnCarrito.length = 0;
     localStorage.setItem("productos-carrito", JSON.stringify(productosEnCarrito));
-
     contenedorCarritoVacio.classList.add("disabled");
     contenedorCarritoProductos.classList.add("disabled");
     contenedorCarritoAcciones.classList.add("disabled");
@@ -165,34 +222,25 @@ function comprarCarrito() {
 
 }
 
-//                                                                        ASIGNACION DE BOTONES
+                                                      // CAMBIAR LAS CANTIDADES Y ACTUALIZAR LOS TOTALES
 
 
-    botonEnvio = document.querySelector("#boton-envio");
-    botonEnvio.addEventListener("click", mostrarEnvio);
-
-    botonDesplegable = document.querySelector("#dropbtn");
-    botonDesplegable.addEventListener("click", menuDesplegable);
-
-    menuDesplegado= document.querySelector("#desplegado");
-
-    opcionesEnvio= document.querySelector("#envio");
-
-    opcionSeleccionada = document.querySelectorAll(".opcion");
-    opcionSeleccionada.forEach (opcion => opcion.addEventListener("click", function(e) {
-        seleccionaOpcion(e.target.innerText);
-    }));
-
-    montoEnvio = document.querySelector("#costo");
-
-    const botonVolver = document.querySelector("#boton-volver");
-    botonVolver.addEventListener("click", volverAModificarCantidades);
-
-    let opcionSelec = null; // Variable global para almacenar la opción seleccionada
+function cambiarCantidad(e){
+    const classBoton = e.currentTarget.classList;
+    const idBoton = e.currentTarget.id;
+    const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+    classBoton.contains('cantidad-resta') ? 
+        productosEnCarrito[index].cantidad > 1 && (
+            productosEnCarrito[index].cantidad--,
+            actualizarTotal())  : productosEnCarrito[index].cantidad++,
+                                    actualizarTotal();
+    productosEnCarrito[index].subtotal = productosEnCarrito[index].cantidad * productosEnCarrito[index].precio;
+    cargarCarrito();
+    localStorage.setItem("productos-carrito", JSON.stringify(productosEnCarrito));}
+                                                                                               
 
 
-
-                                                 //MODIFICAR CANTIDADES DESDE EL CARRITO
+                                                                   //MODIFICAR CANTIDADES DESDE EL CARRITO
 
 
 function volverAModificarCantidades(){
@@ -204,8 +252,8 @@ function volverAModificarCantidades(){
     montoEnvio.classList.add("disabled");
 }
 
-                       // MOSTRAR EL CALCULO DE ENVIO
 
+                                                                   // MOSTRAR EL CALCULO DE ENVIO
 
 
 function mostrarEnvio() {
@@ -219,10 +267,16 @@ function mostrarEnvio() {
 }
 
 
+//                                                                  MENU DESPLEGABLE    
+
+function menuDesplegable() {
+    desplegado.classList.toggle("show");
+    botonDesplegable.classList.toggle("active")
+}
+
+
 
                                                                 // MOSTRAR OPCIONES DE ENVIO
-
-
 
 function seleccionaOpcion(opcion) {
         opcionSelec = opcion;
@@ -235,12 +289,6 @@ function seleccionaOpcion(opcion) {
             botonDesplegable.classList.remove("active")
         );
     }
-//         if (opcionSelec) {
-//             calcularEnvio(opcion);
-//             botonDesplegable.classList.remove("active")
-//         }
-// }
-
 
 
         //                                                             CALCULAR ENVIO
@@ -250,12 +298,9 @@ const pedirDatos = async() => {
     const res = await fetch ("/json/datos.json")
     const data = await res.json();
     costoEnvio = [...data[2]];
-    console.log(costoEnvio)
     }
     
     pedirDatos();
-
-
 
 function calcularEnvio(opcionElegida) {
     let montoTotal = 0
@@ -269,73 +314,10 @@ function calcularEnvio(opcionElegida) {
         botonesCambiarCantidadResta.forEach(boton => boton.disabled = true),
         botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true)
         )
-
-
-    // if(costoSeleccionado){
-    //     let montoTotal = productosEnCarrito.reduce((acc, producto) => acc + producto.subtotal, 0);
-    //     nuevoTotal =  montoTotal + costoSeleccionado.costo;
-    //     montoEnvio.innerText = `Costo de envío: $${costoSeleccionado.costo}`;
-    //     contenedorTotal.innerText = `$${nuevoTotal}`;
-    //     // Deshabilita los botones de cantidad
-    //     botonesCambiarCantidadResta.forEach(boton => boton.disabled = true);
-    //     botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true);
-    //    }
-
     }
-//                                                                  MENU DESPLEGABLE
-
-function menuDesplegable() {
-    desplegado.classList.toggle("show");
-    botonDesplegable.classList.toggle("active")
-}
 
 
 
 
-                                                               // HABILITAR LOS BOTONES DE CANTIDAD
-
-function actualizarBotonesCantidad() {
-    botonesCambiarCantidadResta = document.querySelectorAll(".cantidad-resta");
-
-    botonesCambiarCantidadSuma = document.querySelectorAll(".cantidad-suma");
-
-    botonesCambiarCantidadResta.forEach(boton => {
-        boton.addEventListener("click", cambiarCantidad);
-    });
-
-    botonesCambiarCantidadSuma.forEach(boton => {
-        boton.addEventListener("click", cambiarCantidad);
-    });
-}
-
-                                                       // CAMBIAR LAS CANTIDADES Y ACTUALIZAR LOS TOTALES
-
-function cambiarCantidad(e){
-    const classBoton = e.currentTarget.classList;
-    const idBoton = e.currentTarget.id;
-    const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
-    
-    
-    classBoton.contains('cantidad-resta') ? 
-        productosEnCarrito[index].cantidad > 1 && (
-            productosEnCarrito[index].cantidad--,
-            actualizarTotal())  : productosEnCarrito[index].cantidad++,
-                                  actualizarTotal()
-
-
-    // if (classBoton.contains('cantidad-resta')) {
-    //     if(productosEnCarrito[index].cantidad > 1) {
-    //         productosEnCarrito[index].cantidad--;
-    //         actualizarTotal();
-    //     }
-    // } else {
-    //     productosEnCarrito[index].cantidad++;
-    // actualizarTotal();
-// }
-    productosEnCarrito[index].subtotal = productosEnCarrito[index].cantidad * productosEnCarrito[index].precio;
-    cargarCarrito();
-    localStorage.setItem("productos-carrito", JSON.stringify(productosEnCarrito));
-}
-
-
+ 
 
