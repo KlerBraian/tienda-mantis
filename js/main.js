@@ -1,4 +1,4 @@
-fetch ("/json/datos.json")
+fetch ("./json/datos.json")
 .then((resp)  => resp.json())    
 .then((data) => {
 productos = [...data[0]];
@@ -122,7 +122,7 @@ function agregarAlCarrito(e) {
     }).showToast();
 
     localStorage.setItem("productos-carrito", JSON.stringify(carrito));
-    
+
 }
 
                                          /*  FUNCION ACTUALIZAR NUMERO DE PROD CARRITO*/
