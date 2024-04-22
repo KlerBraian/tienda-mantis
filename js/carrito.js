@@ -295,7 +295,7 @@ function seleccionaOpcion(opcion) {
 
 
 const pedirDatos = async() => {
-    const res = await fetch ("/json/datos.json")
+    const res = await fetch ("./json/datos.json")
     const data = await res.json();
     costoEnvio = [...data[2]];
     }
