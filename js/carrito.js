@@ -316,6 +316,33 @@ function calcularEnvio(opcionElegida) {
 
 
 
+const botonDescuento = document.querySelector(".descuento-boton");
+const inputDescuento = document.querySelector(".descuento-input");
 
- 
+
+let banderaDescuento = JSON.parse(localStorage.getItem("bandera-descuento")) || false;
+
+botonDescuento.addEventListener("click", () => {
+    if(inputDescuento.value != "mantis") {
+        Swal.fire({
+            icon: "error",
+            title: "ah ah ah no dijiste la palabra magica",
+            text: "Something went wrong!",
+            footer: '<a href="#">Why do I have this issue?</a>'
+          });
+    } else if (banderaDescuento=== false) {
+        aplicarDescuento()
+        console.log ("aplicaste descuento");
+        banderaDescuento = true
+        localStorage.setItem("bandera-descuento", JSON.stringify(banderaDescuento));
+    } else console.log("ya ingresaste el cupon")
+})
+
+function aplicarDescuento () {
+    montoTotal = productosEnCarrito.reduce((acc, producto) => acc + producto.subtotal, 0),
+    totalConDescuento = montoTotal *0.90
+    contenedorTotal.innerText = `${totalConDescuento}`
+    console.log (montoTotal)
+} 
+
 

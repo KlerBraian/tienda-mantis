@@ -429,6 +429,28 @@ aside {
 }
 
 
+.descuento-contenedor {
+    display: flex;
+}
+
+.descuento-input{
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+}
+
+.descuento-boton {
+    margin-left: 1rem;
+    padding: 0.5rem;
+    background-color: #a80000;
+    border-radius: 0.3rem;
+    border: none;
+    color: #ffffff;
+}
+
+
+
+
 
                                                                                 /*  MENU DESPLEGABLE */
 .dropdown {
