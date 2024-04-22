@@ -8,6 +8,7 @@ let botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
 const botonVaciar = document.querySelector("#carrito-boton-vaciar");
 const contenedorTotal = document.querySelector("#total");
 const botonComprar = document.querySelector("#carrito-boton-comprar");
+const botonContinuarComprando= document.querySelector("#continuar-comprando")
 
                 //                                                    CARGAR PRODUCTOS DEL CARRITO
 
@@ -119,6 +120,7 @@ function actualizarBotonesCantidad() {
 function actualizarTotal() {
     const montoTotal = productosEnCarrito.reduce((acc, producto) => acc + (producto.cantidad * producto.precio), 0);
     contenedorTotal.innerText = `$${montoTotal}`;
+    localStorage.setItem("total", JSON.stringify(montoTotal));
 }
 
 
@@ -319,7 +321,7 @@ function calcularEnvio(opcionElegida) {
 const botonDescuento = document.querySelector(".descuento-boton");
 const inputDescuento = document.querySelector(".descuento-input");
 
-
+let totalConDescuento = JSON.parse(localStorage.getItem("total"));
 let banderaDescuento = JSON.parse(localStorage.getItem("bandera-descuento")) || false;
 
 botonDescuento.addEventListener("click", () => {
@@ -327,22 +329,33 @@ botonDescuento.addEventListener("click", () => {
         Swal.fire({
             icon: "error",
             title: "ah ah ah no dijiste la palabra magica",
-            text: "Something went wrong!",
-            footer: '<a href="#">Why do I have this issue?</a>'
+            imageUrl: "https://pbs.twimg.com/tweet_video_thumb/CFqc-ipW8AAaQRz.png",
+            imageHeight: 200,
+            text: "Cupon invalido",
           });
+          inputDescuento.value =""
     } else if (banderaDescuento=== false) {
-        aplicarDescuento()
-        console.log ("aplicaste descuento");
-        banderaDescuento = true
+        aplicarDescuento();
+        banderaDescuento = true;
         localStorage.setItem("bandera-descuento", JSON.stringify(banderaDescuento));
-    } else console.log("ya ingresaste el cupon")
+        Swal.fire({ 
+            text: "Cupon aplicado, gracias",
+            icon: "success"
+          });
+          inputDescuento.value =""
+    } else  Swal.fire({
+        icon: "error",
+        text: "Ya ingresaste este cupon, te olvidaste?",
+      });inputDescuento.value =""
+      botonesCambiarCantidadResta.forEach(boton => boton.disabled = true),
+        botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true)
 })
 
 function aplicarDescuento () {
-    montoTotal = productosEnCarrito.reduce((acc, producto) => acc + producto.subtotal, 0),
+    montoTotal = localStorage.getItem("total")
     totalConDescuento = montoTotal *0.90
     contenedorTotal.innerText = `${totalConDescuento}`
-    console.log (montoTotal)
+    localStorage.setItem("total" , JSON.stringify(totalConDescuento))
 } 
 
 
