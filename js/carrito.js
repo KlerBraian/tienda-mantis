@@ -293,14 +293,12 @@ function seleccionaOpcion(opcion) {
 
         //                                                             CALCULAR ENVIO
 
+fetch ("./json/datos.json")
+    .then((resp)  => resp.json())    
+    .then((data) => {
+    costoEnvio = [...data[2]];
+})
 
-const pedirDatos = async() => {
-    const res = await fetch ("./json/datos.json")
-    const data = await res.json();
-    costoEnvio = [...data[3]];
-    }
-    
-    pedirDatos();
 
 function calcularEnvio(opcionElegida) {
     let montoTotal = 0
