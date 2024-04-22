@@ -4,6 +4,8 @@ fetch ("./json/datos.json")
 productos = [...data[0]];
 cargarProductos(productos);})
 
+
+
                                          /*  FUNCION PARA CARGAR PRODUCTOS AL MAIN  (CATEGORIA O BUSQUEDA)*/
 
 
