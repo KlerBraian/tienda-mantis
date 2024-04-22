@@ -388,7 +388,8 @@ aside {
 .carrito-acciones{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
+    min-height: 35vh;
 }
 .carrito-boton-vaciar {
     border: 0;
@@ -533,8 +534,6 @@ aside {
 .footer-contenedor{
     margin-top: auto;
 }
-
-
 
 
 
