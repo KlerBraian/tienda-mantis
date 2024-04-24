@@ -11,6 +11,7 @@ const botonComprar = document.querySelector("#carrito-boton-comprar");
 const botonContinuarComprando= document.querySelector("#continuar-comprando")
 const apartadoDescuento = document.querySelector(".contenedor-apartado-descuento")
 
+
                 //                                                    CARGAR PRODUCTOS DEL CARRITO
 
 
@@ -129,9 +130,8 @@ function actualizarTotal() {
         console.log("Hola")
     } else {
         montoTotal = productosEnCarrito.reduce((acc, producto) => acc + (producto.cantidad * producto.precio), 0); 
-      
-        console.log("chau")
-    }  contenedorTotal.innerText = `$${montoTotal}`;
+    }  
+    contenedorTotal.innerText = `$${montoTotal}`;
     localStorage.setItem("total", JSON.stringify(montoTotal));
 }
 
@@ -336,11 +336,38 @@ function calcularEnvio(opcionElegida) {
 
 
 
+
+
+    //                                                              SECCION DESCUENTO   
+
+
+const botonCupon = document.querySelector("#boton-cupon")
 const botonDescuento = document.querySelector(".descuento-boton");
 const inputDescuento = document.querySelector(".descuento-input");
 
 let totalConDescuento = JSON.parse(localStorage.getItem("total"));
 let banderaDescuento = JSON.parse(localStorage.getItem("bandera-descuento")) || false;
+
+let cuponMaximo = JSON.parse(localStorage.getItem("cupon-maximo")) || 0;
+botonCupon.addEventListener("click", () => {
+    if (cuponMaximo < 1) {
+        Swal.fire({
+            icon: "success",
+            text: "¡Felicidades, tienes un 10% de descuento en tu primera compra utilizando el código: mantis!",
+        });
+        cuponMaximo++;
+        localStorage.setItem("cupon-maximo" , JSON.stringify(cuponMaximo));
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: "Paraaaa",
+            imageUrl: "https://i.ytimg.com/vi/FwrB8sMiZCY/oar2.jpg?sqp=-oaymwEYCJgDENAFSFqQAgHyq4qpAwcIARUAAIhC&rs=AOn4CLArfaEnOqZA7L6PBm1LNfC5tSryHw",
+            imageHeight: 200,
+            text: "Lo sentimos, ya te dimos un código",
+        });
+    }
+});
+
 
 botonDescuento.addEventListener("click", () => {
     if(inputDescuento.value != "mantis") {
@@ -365,8 +392,8 @@ botonDescuento.addEventListener("click", () => {
     } else  Swal.fire({
         icon: "error",
         text: "Ya ingresaste este cupon, te olvidaste?",
-      });inputDescuento.value =""
-
+      });
+      inputDescuento.value =""
 })
 
 function aplicarDescuento () {
