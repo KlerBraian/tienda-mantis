@@ -9,6 +9,7 @@ const botonVaciar = document.querySelector("#carrito-boton-vaciar");
 const contenedorTotal = document.querySelector("#total");
 const botonComprar = document.querySelector("#carrito-boton-comprar");
 const botonContinuarComprando= document.querySelector("#continuar-comprando")
+const apartadoDescuento = document.querySelector(".contenedor-apartado-descuento")
 
                 //                                                    CARGAR PRODUCTOS DEL CARRITO
 
@@ -117,11 +118,23 @@ function actualizarBotonesCantidad() {
 
 //                                                                           ACTUALIZA EL TOTAL
 
-function actualizarTotal() {
-    const montoTotal = productosEnCarrito.reduce((acc, producto) => acc + (producto.cantidad * producto.precio), 0);
-    contenedorTotal.innerText = `$${montoTotal}`;
+const descuentoAplicado = localStorage.getItem("descuento-aplicado") || false;
+const compraDescuentoAplicado = localStorage.getItem("compra-descuento-aplicado") || false;
+
+
+function actualizarTotal() {  
+    let montoTotal = 0
+    if (localStorage.getItem("descuento-aplicado") === "true" && !localStorage.getItem("compra-con-descuento")){
+        montoTotal = productosEnCarrito.reduce((acc, producto) => acc + (producto.cantidad * producto.precio), 0) * 0.90; 
+        console.log("Hola")
+    } else {
+        montoTotal = productosEnCarrito.reduce((acc, producto) => acc + (producto.cantidad * producto.precio), 0); 
+      
+        console.log("chau")
+    }  contenedorTotal.innerText = `$${montoTotal}`;
     localStorage.setItem("total", JSON.stringify(montoTotal));
 }
+
 
 
 
@@ -188,6 +201,7 @@ function vaciarCarrito() {
  productosEnCarrito.length = 0
  localStorage.setItem('productos-carrito', JSON.stringify(productosEnCarrito));
  cargarCarrito();
+ apartadoDescuento.classList.add("disabled")
 }
 
 
@@ -211,6 +225,7 @@ botonComprar.addEventListener("click", ()=> Swal.fire({
         title: "Muchas gracias por tu compra",
         icon: "success"
       });
+      
     }
   }));
 
@@ -221,7 +236,10 @@ function comprarCarrito() {
     contenedorCarritoProductos.classList.add("disabled");
     contenedorCarritoAcciones.classList.add("disabled");
     contenedorCarritoComprado.classList.remove("disabled");
-
+    if(localStorage.getItem("descuento-aplicado") === "true"){
+        localStorage.setItem("compra-con-descuento" , true);
+   }
+   apartadoDescuento.classList.add("disabled")
 }
 
                                                       // CAMBIAR LAS CANTIDADES Y ACTUALIZAR LOS TOTALES
@@ -338,6 +356,7 @@ botonDescuento.addEventListener("click", () => {
         aplicarDescuento();
         banderaDescuento = true;
         localStorage.setItem("bandera-descuento", JSON.stringify(banderaDescuento));
+        localStorage.setItem("descuento-aplicado" ,true)
         Swal.fire({ 
             text: "Cupon aplicado, gracias",
             icon: "success"
@@ -347,8 +366,7 @@ botonDescuento.addEventListener("click", () => {
         icon: "error",
         text: "Ya ingresaste este cupon, te olvidaste?",
       });inputDescuento.value =""
-      botonesCambiarCantidadResta.forEach(boton => boton.disabled = true),
-        botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true)
+
 })
 
 function aplicarDescuento () {
@@ -357,5 +375,3 @@ function aplicarDescuento () {
     contenedorTotal.innerText = `${totalConDescuento}`
     localStorage.setItem("total" , JSON.stringify(totalConDescuento))
 } 
-
-
