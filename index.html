@@ -1,67 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tienda Mantis: Tu destino en línea para productos musicales de alta calidad. Encuentra guitarras eléctricas, bajos poderosos, pedales y accesorios esenciales.">
-    <meta name="keywords" content="Tienda Mantis, música, instrumentos musicales, guitarras, bajos, pedales, accesorios">
+    <meta name="description"
+        content="Tienda Mantis: Tu destino en línea para productos musicales de alta calidad. Encuentra guitarras eléctricas, bajos poderosos, pedales y accesorios esenciales.">
+    <meta name="keywords"
+        content="Tienda Mantis, música, instrumentos musicales, guitarras, bajos, pedales, accesorios">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="./style/estilos.css">
     <title>Tienda Mantis</title>
 </head>
+
 <body>
-    <header class="menu-header">
-        <nav class="menu-nav">
-            <ul class="menu-nav-ul">
-                <li><a class="nav-link active" href="./index.html">Inicio</a></li>
-                <li><a class="nav-link" href="./pages/quienessomos.html">Quienes somos</a></li>
-                <li><a class="nav-link" href="./pages/marcas.html">Nuestras marcas</a></li>
-                <li><a class="nav-link" href="./pages/contacto.html">Contacto</a></li>
+    <div class="container-page">
+    <div class="header-container">
+        <header class="menu-header">
+            <nav class="menu-nav">
+                <ul class="menu-nav-ul">
+                    <li><a class="nav-link active" href="./index.html">Inicio</a></li>
+                    <li><a class="nav-link" href="./pages/quienessomos.html">Quienes somos</a></li>
+                    <li><a class="nav-link" href="./pages/marcas.html">Nuestras marcas</a></li>
+                    <li><a class="nav-link" href="./pages/contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1 class="menu-logo">Tienda Mantis</h1>
+        <div class="contenedor-buscador">
+            <input class="buscador" type="text" placeholder="Buscar productos..." id="buscar">
+        </div>
+        <nav class="contenedor-categoria">
+            <ul class="menu-categoria">
+                <li>
+                    <button id="todos" class="boton-menu boton-categoria active"><i class="bi bi-music-note-beamed"></i>
+                        Todos los productos</button>
+                </li>
+                <li>
+                    <button id="Guitarras" class="boton-menu boton-categoria"><i class="bi bi-music-note-beamed"></i>
+                        Guitarras</button>
+                </li>
+                <li>
+                    <button id="Bajos" class="boton-menu boton-categoria"><i class="bi bi-music-note-beamed"></i>
+                        Bajos</button>
+                </li>
+                <li>
+                    <button id="Pedales" class="boton-menu boton-categoria"><i class="bi bi-music-note-beamed"></i>
+                        Pedales</button>
+                </li>
+                <li>
+                    <button id="Accesorios" class="boton-menu boton-categoria"><i class="bi bi-music-note-beamed"></i>
+                        Accesorios</button>
+                </li>
             </ul>
         </nav>
-    </header>
-    <h1 class="menu-logo">Tienda Mantis</h1>
-    <div class="contenedor-buscador">
-        <input class="buscador" type="text" placeholder="Buscar productos..." id="buscar">
     </div>
-    <nav class="contenedor-categoria">
-        <ul class="menu-categoria">
-            <li>
-                <button id="todos" class="boton-menu boton-categoria active"><i class="bi bi-music-note-beamed"></i> Todos los productos</button>
-            </li>
-            <li>
-                <button id="Guitarras" class="boton-menu boton-categoria"><i class="bi bi-music-note-beamed"></i> Guitarras</button>
-            </li>
-            <li>
-                <button id="Bajos" class="boton-menu boton-categoria"><i class="bi bi-music-note-beamed"></i> Bajos</button>
-            </li>
-            <li>
-                <button id="Pedales" class="boton-menu boton-categoria"><i class="bi bi-music-note-beamed"></i> Pedales</button>
-            </li>
-            <li>
-                <button id="Accesorios" class="boton-menu boton-categoria"><i class="bi bi-music-note-beamed"></i> Accesorios</button>
-            </li>
+    <main>
+        <div class="contenedor-productos-titulo">
+            <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
+            <a class="boton-carrito" href="./carrito.html"><i class="bi bi-cart3"></i> Ir al carrito <span
+                    class="numero-carrito">0</span></a>
+        </div>
+        <div id="contenedor-productos" class="contenedor-productos">
+        </div>
+    </main>
+    <footer class="footer">
+        <p class="footer-p">@Tienda Mantis</p>
+        <ul class="footer-ul">
+            <li class="footer-redes"><a href="https://www.instagram.com/mantis.banda/" target="_blank"><i
+                        class="bi bi-instagram"></i></a></li>
+            <li class="footer-redes"><a href="https://www.youtube.com/@mantisbanda1308" target="_blank"><i
+                        class="bi bi-youtube"></i></a></li>
+            <li class="footer-redes"><a href="https://www.facebook.com/profile.php?id=100087381406841"
+                    target="_blank"><i class="bi bi-facebook"></i></a></li>
+            <li class="footer-redes"><a href="https://www.tiktok.com/@mantis.banda" target="_blank"><i
+                        class="bi bi-tiktok"></i></a></li>
         </ul>
-    </nav>
-            <main>
-                <div class="contenedor-productos-titulo">
-                    <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
-                    <a class="boton-carrito" href="./carrito.html"><i class="bi bi-cart3"></i>   Ir al carrito <span class="numero-carrito">0</span></a>
-                </div>
-                <div id="contenedor-productos" class="contenedor-productos">
-                </div>
-            </main>
-            <footer class="footer">
-                <p class="footer-p">@Tienda Mantis</p>
-                <ul class="footer-ul">
-                    <li class="footer-redes"><a href="https://www.instagram.com/mantis.banda/" target="_blank"><i class="bi bi-instagram"></i></a></li>
-                    <li class="footer-redes"><a href="https://www.youtube.com/@mantisbanda1308"target="_blank"><i class="bi bi-youtube"></i></a></li>
-                    <li class="footer-redes"><a href="https://www.facebook.com/profile.php?id=100087381406841"target="_blank"><i class="bi bi-facebook"></i></a></li>
-                    <li class="footer-redes"><a href="https://www.tiktok.com/@mantis.banda"target="_blank"><i class="bi bi-tiktok"></i></a></li>
-                </ul>
-            </footer>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-<script src="./js/main.js"></script>   
+    </footer>
+</div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./js/main.js"></script>
 </body>
+
 </html>

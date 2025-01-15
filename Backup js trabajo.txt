@@ -1,0 +1,1281 @@
+const prodArray = [
+    {
+        id:"guitarra-1",
+        titulo:"Guitarra Dean Mustaine Signature",
+        imagen:"./img/guitarras/guitarra-1-dean.jpg",
+        precio: 180000,
+        categoria:{
+            id: 1,
+            titulo: "Guitarras"}
+    },
+    {
+        id:"guitarra-2",
+        titulo:"Guitarra Gibson ES35",
+        imagen: "./img/guitarras/guitarra-2-gibson.jpg",
+        precio: 130000,
+        categoria:{
+            id: 2,
+            titulo: "Guitarras"}
+    },   
+    {
+        id:"guitarra-3",
+        titulo:"Guitarra Fender Stratocaster Standard",
+        imagen: "./img/guitarras/guitarra-3-fender.jpg",
+        precio: 120000,
+        categoria:{
+            id: 3,
+            titulo: "Guitarras"}
+    },   
+    {
+        id:"guitarra-4",
+        titulo:"Guitarra Gibson Lespaul Red Signature",
+        imagen: "./img/guitarras/guitarra-4-lespaul.jpg",
+        precio: 130000,
+        categoria:{
+            id: 4,
+            titulo: "Guitarras"}
+    },  
+    {
+        id:"guitarra-5",
+        titulo:"Guitarra Gibson Firebird",
+        imagen:"./img/guitarras/guitarra-5-firebird.jpg",
+        precio: 150000,
+        categoria:{
+            id: 5,
+            titulo: "Guitarras"}
+    },   
+    {
+        id:"bajo-1",
+        titulo:"Bajo Gibson LesPaul 2015",
+        imagen: "./img/bajos/bajo-1-gibson.jpg",
+        precio: 120000,
+        categoria:{
+            id: 1,
+            titulo: "Bajos"}
+    },   
+    {
+        id:"bajo-2",
+        titulo:"Bajo Spector Legend STD ",
+        imagen:"./img/bajos/bajo-2-spector.jpg",
+        precio: 160000,
+        categoria:{
+            id: 2,
+            titulo: "Bajos"}
+    },  
+     {
+        id:"bajo-3",
+        titulo: "Bajo Gibson Midtown",
+        imagen:"./img/bajos/bajo-3-gibson.jpg",
+        precio: 140000,
+        categoria:{
+            id: 3,
+            titulo: "Bajos"}
+    },   
+    {
+        id:"bajo-4",
+        titulo:"Bajo Spector NS Pulse",
+        imagen:"./img/bajos/bajo-4-spector.jpg",
+        precio: 180000,
+        categoria:{
+            id: 4,
+            titulo: "Bajos"}
+    },   
+    {
+        id:"bajo-5",
+        titulo: "Bajo Fender",
+        imagen:"./img/bajos/bajo-5-fender.jpg",
+        precio: 150000,
+        categoria:{
+            id: 5,
+            titulo: "Bajos"}
+    },   
+    {
+        id:"pedales-1",
+        titulo: "Pedal Vox Wah",
+        imagen:"./img/pedales/pedal-1-vox.jpg",
+        precio: 80000,
+        categoria:{
+            id: 1,
+            titulo: "Pedales"}
+    },  
+    {
+        id:"pedales-2",
+        titulo:"Pedal Hummingverb Reverb",
+        imagen:"./img/pedales/pedal-2-hummingverb.jpg",
+        precio:60000,
+        categoria:{
+            id: 2,
+            titulo: "Pedales"}
+    },   
+    {
+        id:"pedales-3",
+        titulo:"Pedal British Drive",
+        imagen:"./img/pedales/pedal-3-bdrive.jpg",
+        precio: 65000,
+        categoria:{
+            id: 3,
+            titulo: "Pedales"}
+    },   
+    {
+        id:"pedales-4",
+        titulo:"Pedal Distortion",
+        imagen:"./img/pedales/pedal-4-distortion.jpg",
+        precio: 50000,
+        categoria:{
+            id: 4,
+            titulo: "Pedales"}
+    },   
+    {
+        id:"pedales-5",
+        titulo: "Pedal Whammy",
+        imagen:"./img/pedales/pedal-5-whammy.jpg",
+        precio: 68000,
+        categoria:{
+            id: 5,
+            titulo: "Pedales"}
+    },   
+    {
+        id:"accesorios-1",
+        titulo:"Afinador",
+        imagen:"./img/accesorios/acces-1-afinador.jpg",
+        precio: 15000,
+        categoria:{
+            id: 1,
+            titulo: "Accesorios"}
+    },   
+    {
+        id:"accesorios-2",
+        titulo: "Correa",
+        imagen:"./img/accesorios/acces-2-correa.jpg",
+        precio: 7000,
+        categoria:{
+            id: 2,
+            titulo: "Accesorios"}
+    },   
+    {
+        id:"accesorios-3",
+        titulo: "Cable",
+        imagen:"./img/accesorios/acces-3-cable.jpg",
+        precio: 12000,
+        categoria:{
+            id: 3,
+            titulo: "Accesorios"}
+    },   
+    {
+        id:"accesorios-4",
+        titulo:"Capotraste",
+        imagen:"./img/accesorios/acces-4-capotraste.jpg",
+        precio: 6000,
+        categoria:{
+            id: 4,
+            titulo: "Accesorios"}
+    },   
+    {
+        id:"accesorios-5",
+        titulo:"Pua",
+        imagen:"./img/accesorios/acces-5-puas.jpg",
+        precio: 2000,
+        categoria:{
+            id: 5,
+            titulo: "Accesorios"}
+    }
+]
+
+let carrito = [];
+
+
+let carrito = [];
+
+// if (!isNaN(productoInput)) {
+//     //                 producto = parseInt(productoInput);   
+
+// alert('Bienvenido');
+    // let seguirComprando = true;
+    // while (seguirComprando) {
+    //     agregarAlCarrito()
+    //     modificarCarrito()
+    //     eliminarCarrito()
+    //     let finalizar = prompt('Desea finalizar el proceso de compra? (si/no');
+    //     if (finalizar.toLocaleLowerCase()=== 'si') {
+    //         seguirComprando = false;
+    //         mostrarCarrito()
+    //     }
+    // }
+    // seguirComprando = false;
+
+function agregarAlCarrito() {
+  let categoriaInput = prompt('Elija el número de la categoría:\n 1. 🎸Guitarras.\n 2. 🎻Bajos.\n 3.        🎛️Pedales.\n 4. 🔌Accesorios');
+        let categoria;
+        if (!isNaN(categoriaInput)) {
+            categoria = parseInt(categoriaInput);
+            let producto;
+            switch (categoria) {
+                    case 1: // Guitarras
+                        producto = parseInt(prompt('Ingrese el número del producto que desea:\n1. 🎸Guitarra Dean Mustaine Signature\n2. 🎸Guitarra Gibson ES-335 Satin Cherry\n3. 🎸Guitarra Fender Stratocaster Classic\n4. 🎸Guitarra Gibson LesPaul Red Signature\n5.🎸 Guitarra Gibson Firebird'));
+                    if(isNaN(producto)) {
+                    alert('Por favor ingrese solo numeros');
+        continue;
+    }
+                        break;
+                    
+                    case 2: // Bajos
+                        producto = parseInt(prompt(
+                            'Ingrese el número del producto que desea:\n1. 🎻Bajo Gibsonn ES-LesPaul 2015\n2. 🎻Bajo Spector Legend Standard\n3. 🎻Bajo Gibson Midtown\n4. 🎻Bajo Spector NS Pulse\n5. 🎻Bajo Fender American'));
+if(isNaN(producto)) {
+    alert('Por favor ingrese solo numeros');
+    
+}
+                        break;
+                
+                    case 3: // Pedales
+                        producto = parseInt(prompt(
+                            'Ingrese el número del producto que desea:\n1. 🎛️Pedal Vox Wah\n2. Pedal Reverb Hummingverb2\n3. 🎛️Pedal British Drive\n4. 🎛️Pedal Boss Distortion Ds1\n5. 🎛️Pedal Whammy S7'));
+if(isNaN(producto)) {
+    alert('Por favor ingrese solo numeros');
+    
+}
+                        break;
+                
+                    case 4: // Accesorios
+                        producto = parseInt(prompt(
+                            'Ingrese el número del producto que desea:\n1. 🔌Afinador Analogico\n2. 🔌Correa Cuero\n3. 🔌Cable 7M\n4. 🔌Capotraste Regulable\n5. 🔌Pua Fender Medium'));
+if(isNaN(producto)) {
+    alert('Por favor ingrese solo numeros');
+    
+}
+                        break;
+                    default:
+                        alert("Opción no válida");
+                        break;
+                }
+                seguirComprando = confirm("¿Desea seguir comprando?");
+                
+        } else {
+            alert("Por favor, ingrese un número válido para la categoría.");
+        }
+    }
+
+
+
+function modificarCantidadProducto() {
+    let modificar = true;
+    while (modificar) {
+        console.log("Carrito actual:");
+        carrito.forEach((producto, index) => {
+            console.log(`${index + 1}. ${producto.nombre} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio}`);
+        });
+
+        let productoMod = parseInt(prompt('Ingrese el número del producto que desea modificar:'));
+
+        if (productoMod >= 1 && productoMod <= carrito.length) {
+            let prodExistente = carrito[productoMod - 1];
+            let nuevaCantidad = parseInt(prompt(`Ingrese la nueva cantidad para ${prodExistente.nombre}:`));
+            let montoTotalNuevo = prodArray.find(item => item.titulo === prodExistente.nombre).precio * nuevaCantidad;
+            prodExistente.cantidad = nuevaCantidad;
+            prodExistente.precio = montoTotalNuevo;
+            console.log(`La cantidad y el monto total para ${prodExistente.nombre} han sido actualizados.`);
+        } else {
+            console.log('El número de producto ingresado no es válido.');
+        }
+
+        let continuarModificando = prompt('¿Desea modificar la cantidad de otro producto? (si/no)');
+        if (continuarModificando.toLowerCase() !== 'si') {
+            modificar = false;
+        }
+    }
+}
+
+
+function eliminarProducto() {
+    let eliminar = true;
+    while (eliminar) {
+        console.log("Carrito actual:");
+        carrito.forEach((producto, index) => {
+            console.log(`${index + 1}. ${producto.nombre} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio}`);
+        });
+
+        let productoEliminar = parseInt(prompt('Ingrese el número del producto que desea eliminar:'));
+
+        if (productoEliminar >= 1 && productoEliminar <= carrito.length) {
+            let productoEliminado = carrito.splice(productoEliminar - 1, 1);
+            console.log(`El producto ${productoEliminado[0].nombre} ha sido eliminado del carrito.`);
+        } else {
+            console.log('El número de producto ingresado no es válido.');
+        }
+
+        let continuarEliminando = prompt('¿Desea eliminar otro producto? (si/no)');
+        if (continuarEliminando.toLowerCase() !== 'si') {
+            eliminar = false;
+        }
+    }
+}
+
+
+let modificar = true;
+while (modificar) {
+    let mensajeAlerta = "Carrito actual:\n";
+    carrito.forEach((producto, index) => {
+        mensajeAlerta += `${index + 1}. ${producto.nombre} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio}\n`;
+    });
+    alert(mensajeAlerta);
+
+    // Resto del código para modificar el carrito...
+}
+function eliminarProductoPorNombre(numeroProd) {
+    if (numeroProd >= 1 && numeroProd <= carrito.length) {
+        let prodEliminado = carrito.splice(numeroProd - 1, 1);
+        alert(`El producto ${prodEliminado[0].nombre} ha sido eliminado del carrito`);
+    } else {
+        alert('El número de producto ingresado no es válido.');
+    }
+    return carrito;
+}
+
+let mensajeAlerta = "Carrito actual:\n";
+carrito.forEach((producto, index) => {
+    mensajeAlerta += `${index + 1}. ${producto.nombre} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio}\n`;
+});
+
+let deseaEliminar = prompt('Desea eliminar algun producto del carrito (si/no)')
+if (deseaEliminar.toLowerCase() === 'si') {
+    let eliminar = true;
+    while (eliminar) {
+        let prodEliminar = parseInt(prompt(`Elija el numero de producto a eliminar:\n${mensajeAlerta}`));
+        carrito = eliminarProductoPorNombre(prodEliminar);
+
+        let continuarEliminando = prompt('¿Desea eliminar otro producto? (si/no)');
+        if (continuarEliminando.toLowerCase() !== 'si') {
+            eliminar = false;
+        }
+    }
+}
+
+// Mostrar el carrito actualizado
+let mensajeAlertaActualizado = "Carrito actualizado:\n";
+carrito.forEach((producto, index) => {
+    mensajeAlertaActualizado += `${index + 1}. ${producto.nombre} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio}\n`;
+});
+alert(mensajeAlertaActualizado);
+
+
+
+
+
+
+
+
+
+
+
+
+et carrito = [];
+
+function agregarAlCarrito() {
+    let montoTotal = 0;
+    let comprar = true;
+
+    while (comprar) {
+        let categoriaInput = prompt('Elija el número de la categoría:\n 1. 🎸Guitarras\n 2. 🎻Bajos\n 3. 🎛️Pedales\n 4. 🔌Accesorios');
+        let categoria;
+        categoria = parseInt(categoriaInput);
+            if (isNaN(categoria) || categoria < 1 || categoria > 4) {
+                alert("Opción no válida. Por favor, elija un número del 1 al 4.");
+                continue;
+            }
+            let producto;
+            let continuarSeleccionando = true;
+            while (continuarSeleccionando) {
+                let mensajeProductos;
+                switch (categoria) {
+                    case 1: // Guitarras
+                        mensajeProductos = 'Ingrese el número del producto que desea:\n1. 🎸Guitarra Dean Mustaine Signature\n2. 🎸Guitarra Gibson ES-335 Satin Cherry\n3. 🎸Guitarra Fender Stratocaster Classic\n4. 🎸Guitarra Gibson LesPaul Red Signature\n5.🎸 Guitarra Gibson Firebird';
+                        break;
+                    
+                    case 2: // Bajos
+                        mensajeProductos = 'Ingrese el número del producto que desea:\n6. 🎻Bajo Gibsonn ES-LesPaul 2015\n7. 🎻Bajo Spector Legend Standard\n8. 🎻Bajo Gibson Midtown\n9. 🎻Bajo Spector NS Pulse\n10. 🎻Bajo Fender American';
+                        break;
+                    
+                    case 3: // Pedales
+                        mensajeProductos = 'Ingrese el número del producto que desea:\n1. 🎛️Pedal Vox Wah\n2. Pedal Reverb Hummingverb2\n3. 🎛️Pedal British Drive\n4. 🎛️Pedal Boss Distortion Ds1\n5. 🎛️Pedal Whammy S7';
+                        break;
+                    
+                    case 4: // Accesorios
+                        mensajeProductos = 'Ingrese el número del producto que desea:\n1. 🔌Afinador Analogico\n2. 🔌Correa Cuero\n3. 🔌Cable 7M\n4. 🔌Capotraste Regulable\n5. 🔌Pua Fender Medium';
+                        break;
+                }
+                
+                producto = parseInt(prompt(mensajeProductos));
+                if (isNaN(producto) || producto < 1 || producto > 5) {
+                    alert('Opción no válida, elija un número del 1 al 5.');
+                    continue;
+                }
+                
+                let cantidad = parseInt(prompt(`Ingrese la cantidad de ${prodArray[producto - 1].titulo}`));
+                if (isNaN(cantidad)) {
+                    alert(`Debe colocar un número para definir la cantidad de ${prodArray[producto - 1].titulo}`);
+                    continue;
+                }
+                
+                montoTotal += prodArray[producto - 1].precio * cantidad;
+                carrito.push({cantidad: cantidad, nombre: prodArray[producto - 1].titulo, precio: prodArray[producto - 1].precio * cantidad });
+                console.log(carrito)
+                let continuar = prompt(`Usted seleccionó ${cantidad} ${prodArray[producto - 1].titulo}. El valor total es de $${montoTotal}\nDesea agregar otro producto (Si / No)`);
+                if (continuar.toLowerCase() !== 'si') {
+                    continuarSeleccionando = false;
+                }
+            }
+        
+        let continuarComprando = prompt("¿Desea seguir comprando? (si/no)");
+        if(continuarComprando.toLowerCase() !== 'si'){
+            comprar =false;
+        }
+    }
+    let mensajeCarrito = 'Productos en el carrito:\n';
+    for (let i = 0; i < carrito.length; i++) {
+        mensajeCarrito += `${carrito[i].cantidad} ${carrito[i].nombre} - Precio: $${carrito[i].precio}\n`;
+    }
+    alert(mensajeCarrito);
+}
+
+agregarAlCarrito(); 
+
+//// funcion antes del filter de categorias
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	FINAL TRABAJO TEMPORAL
+
+const prodArray = [
+    {
+        id:"guitarra-1",
+        titulo:"🎸 Guitarra Dean Mustaine Signature",
+        imagen:"./img/guitarras/guitarra-1-dean.jpg",
+        precio: 180000,
+        categoria:"Guitarras"
+    },
+    {
+        id:"guitarra-2",
+        titulo:"🎸 Guitarra Gibson ES35",
+        imagen: "./img/guitarras/guitarra-2-gibson.jpg",
+        precio: 130000,
+        categoria:"Guitarras"
+    },   
+    {
+        id:"guitarra-3",
+        titulo:"🎸 Guitarra Fender Stratocaster Standard",
+        imagen: "./img/guitarras/guitarra-3-fender.jpg",
+        precio: 120000,
+        categoria:"Guitarras"
+    },   
+    {
+        id:"guitarra-4",
+        titulo:"🎸 Guitarra Gibson Lespaul Red Signature",
+        imagen: "./img/guitarras/guitarra-4-lespaul.jpg",
+        precio: 130000,
+        categoria:"Guitarras"
+    },  
+    {
+        id:"guitarra-5",
+        titulo:"🎸 Guitarra Gibson Firebird",
+        imagen:"./img/guitarras/guitarra-5-firebird.jpg",
+        precio: 150000,
+        categoria:"Guitarras"
+    },   
+    {
+        id:"bajo-1",
+        titulo:"🎻 Bajo Gibson LesPaul 2015",
+        imagen: "./img/bajos/bajo-1-gibson.jpg",
+        precio: 120000,
+        categoria:"Bajos"
+    },   
+    {
+        id:"bajo-2",
+        titulo:"🎻 Bajo Spector Legend STD ",
+        imagen:"./img/bajos/bajo-2-spector.jpg",
+        precio: 160000,
+        categoria:"Bajos"
+    },  
+     {
+        id:"bajo-3",
+        titulo: "🎻 Bajo Gibson Midtown",
+        imagen:"./img/bajos/bajo-3-gibson.jpg",
+        precio: 140000,
+        categoria:"Bajos"
+    },   
+    {
+        id:"bajo-4",
+        titulo:"🎻 Bajo Spector NS Pulse",
+        imagen:"./img/bajos/bajo-4-spector.jpg",
+        precio: 180000,
+        categoria:"Bajos"
+    },   
+    {
+        id:"bajo-5",
+        titulo: "🎻 Bajo Fender American",
+        imagen:"./img/bajos/bajo-5-fender.jpg",
+        precio: 150000,
+        categoria:"Bajos"
+    },   
+    {
+        id:"pedales-1",
+        titulo: "🎛️ Pedal Vox Wah",
+        imagen:"./img/pedales/pedal-1-vox.jpg",
+        precio: 80000,
+        categoria:"Pedales"
+    },  
+    {
+        id:"pedales-2",
+        titulo:"🎛️ Pedal Hummingverb2 Reverb",
+        imagen:"./img/pedales/pedal-2-hummingverb.jpg",
+        precio:60000,
+        categoria:"Pedales"
+    },   
+    {
+        id:"pedales-3",
+        titulo:"🎛️ Pedal British Drive",
+        imagen:"./img/pedales/pedal-3-bdrive.jpg",
+        precio: 65000,
+        categoria:"Pedales"
+    },   
+    {
+        id:"pedales-4",
+        titulo:"🎛️ Pedal Boss Distortion Ds2",
+        imagen:"./img/pedales/pedal-4-distortion.jpg",
+        precio: 50000,
+        categoria:"Pedales"
+    },   
+    {
+        id:"pedales-5",
+        titulo: "🎛️ Pedal Whammy",
+        imagen:"./img/pedales/pedal-5-whammy.jpg",
+        precio: 68000,
+        categoria:"Pedales"
+    },   
+    {
+        id:"accesorios-1",
+        titulo:"🔌 Afinador Analogico",
+        imagen:"./img/accesorios/acces-1-afinador.jpg",
+        precio: 15000,
+        categoria:"Accesorios"
+    },   
+    {
+        id:"accesorios-2",
+        titulo: "🔌 Correa Cuero",
+        imagen:"./img/accesorios/acces-2-correa.jpg",
+        precio: 7000,
+        categoria:"Accesorios"
+    },   
+    {
+        id:"accesorios-3",
+        titulo: "🔌 Cable 7M",
+        imagen:"./img/accesorios/acces-3-cable.jpg",
+        precio: 12000,
+        categoria:"Accesorios"
+    },   
+    {
+        id:"accesorios-4",
+        titulo:"🔌 Capotraste Regulable",
+        imagen:"./img/accesorios/acces-4-capotraste.jpg",
+        precio: 6000,
+        categoria:"Accesorios"
+    },   
+    {
+        id:"accesorios-5",
+        titulo:"🔌 Pua Fender Medium",
+        imagen:"./img/accesorios/acces-5-puas.jpg",
+        precio: 2000,
+        categoria:"Accesorios"
+    }
+]
+const categorias = ["Guitarras", "Bajos", "Pedales", "Accesorios"];
+ 
+
+let carrito = [];
+
+function agregarAlCarrito() {
+    let montoTotal = 0;
+    let comprar = true;
+
+    while (comprar) {
+        let categoriaInput = prompt('Elija el número de la categoría:\n 1. 🎸Guitarras\n 2. 🎻Bajos\n 3. 🎛️Pedales\n 4. 🔌Accesorios');
+        let categoria = parseInt(categoriaInput);
+        if (isNaN(categoria) || categoria < 1 || categoria > 4) {
+            alert("Opción no válida. Por favor, elija un número del 1 al 4.");
+            continue;
+        }
+
+        let productosCategoria = prodArray.filter(producto => producto.categoria === categorias[categoria - 1]);
+
+        let continuarSeleccionando = true;
+        while (continuarSeleccionando) {
+            let mensajeProductos = 'Ingrese el número del producto que desea:\n';
+            productosCategoria.forEach((producto, index) => {
+                mensajeProductos += `${index + 1}. ${producto.titulo}\n`;
+            });
+
+            let producto = parseInt(prompt(mensajeProductos));
+            if (isNaN(producto) || producto < 1 || producto > productosCategoria.length) {
+                alert(`Opción no válida, elija un número del 1 al ${productosCategoria.length}.`);
+                continue;
+            }
+
+            let cantidad = parseInt(prompt(`Ingrese la cantidad de ${productosCategoria[producto - 1].titulo}`));
+            if (isNaN(cantidad)) {
+                alert(`Debe colocar un número para definir la cantidad de ${productosCategoria[producto - 1].titulo}`);
+                continue;
+            }
+
+            let productoIndex = prodArray.findIndex(prod => prod.id === productosCategoria[producto - 1].id);
+            montoTotal += prodArray[productoIndex].precio * cantidad;
+            carrito.push({ cantidad: cantidad, nombre: prodArray[productoIndex].titulo, precio: prodArray[productoIndex].precio * cantidad });
+
+            let continuar = prompt(`Usted seleccionó ${cantidad} ${prodArray[productoIndex].titulo}. El valor total es de $${montoTotal}\nDesea agregar otro producto (Si / No)`);
+            if (continuar.toLowerCase() !== 'si') {
+                continuarSeleccionando = false;
+            }
+        }
+
+        let continuarComprando = prompt("¿Desea seguir comprando? (si/no)");
+        if (continuarComprando.toLowerCase() !== 'si') {
+            comprar = false;
+        }
+    }
+
+    mostrarCarrito()
+//     let mensajeCarrito = 'Productos en el carrito:\n';
+// for (let i = 0; i < carrito.length; i++) {
+//     let producto = prodArray.find(prod => prod.titulo === carrito[i].nombre);
+//     mensajeCarrito += `${carrito[i].nombre}\nCantidad: ${carrito[i].cantidad} - Precio por unidad: $${producto.precio}\nSubtotal: $${carrito[i].precio}\n`;
+// }
+    
+// alert(mensajeCarrito);
+// let mensajeMontoFinal = (`El monto final es de: $${montoTotal}`);
+// alert(mensajeMontoFinal)
+}
+
+agregarAlCarrito();
+
+let deseaModificar = true;
+
+while (deseaModificar) {
+    let opcionModificar;
+    while (true) {
+        opcionModificar = parseInt(prompt('Seleccione qué desea hacer:\n 1. Modificar cantidades de un producto\n 2. Eliminar un producto del carrito\n 3. Salir'));
+        if (!isNaN(opcionModificar) && (opcionModificar === 1 || opcionModificar === 2 || opcionModificar === 3)) {
+            break;
+        } else {
+            alert('Por favor, elija una opción válida.');
+        }
+    }
+    
+    if (opcionModificar === 1) {
+        modificarCantidadProducto();
+    } else if (opcionModificar === 2) {
+        eliminarProducto();
+    } else {
+        deseaModificar = false;
+    }
+}
+
+console.log(carrito)
+
+function modificarCantidadProducto() {
+    let modificar = true;
+    while (modificar) {
+        console.log("Carrito actual:");
+        carrito.forEach((producto, index) => {
+            console.log(`${index + 1}. ${producto.nombre} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio}`);
+        });
+
+        let productoMod = parseInt(prompt('Ingrese el número del producto que desea modificar:'));
+
+        if (productoMod >= 1 && productoMod <= carrito.length) {
+            let prodExistente = carrito[productoMod - 1];
+            let nuevaCantidad = parseInt(prompt(`Ingrese la nueva cantidad para ${prodExistente.nombre}:`));
+            let montoTotalNuevo = prodArray.find(item => item.titulo === prodExistente.nombre).precio * nuevaCantidad;
+            prodExistente.cantidad = nuevaCantidad;
+            prodExistente.precio = montoTotalNuevo;
+            console.log(`La cantidad y el monto total para ${prodExistente.nombre} han sido actualizados.`);
+        } else {
+            console.log('El número de producto ingresado no es válido.');
+        }
+
+        let continuarModificando = prompt('¿Desea modificar la cantidad de otro producto? (si/no)');
+        if (continuarModificando.toLowerCase() !== 'si') {
+            modificar = false;
+        }
+    }
+}
+
+
+function eliminarProducto() {
+    let eliminar = true;
+    while (eliminar) {
+        console.log("Carrito actual:");
+        carrito.forEach((producto, index) => {
+            console.log(`${index + 1}. ${producto.nombre} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio}`);
+        });
+
+        let productoEliminar = parseInt(prompt('Ingrese el número del producto que desea eliminar:'));
+
+        if (productoEliminar >= 1 && productoEliminar <= carrito.length) {
+            let productoEliminado = carrito.splice(productoEliminar - 1, 1);
+            console.log(`El producto ${productoEliminado[0].nombre} ha sido eliminado del carrito.`);
+        } else {
+            console.log('El número de producto ingresado no es válido.');
+        }
+
+        let continuarEliminando = prompt('¿Desea eliminar otro producto? (si/no)');
+        if (continuarEliminando.toLowerCase() !== 'si') {
+            eliminar = false;
+        }
+    }
+}
+
+
+function mostrarCarrito() {
+    let mensajeCarrito = 'Productos en el carrito:\n';
+    let montoTotal = 0;
+    carrito.forEach(item => {
+        mensajeCarrito += `${item.nombre}\nCantidad: ${item.cantidad} - Precio por unidad: $${item.precio / item.cantidad}\nPrecio total: $${item.precio}\n\n`;
+        montoTotal += item.precio;
+    });
+    mensajeCarrito += `Monto total: $${montoTotal}`;
+    alert(mensajeCarrito);
+}
+
+mostrarCarrito()
+
+
+        ||||||| SEGUNDA ENTREGA FINAL JS|||||||
+
+
+const prodArray = [
+    {
+        id:"guitarra-1",
+        titulo:"🎸 Guitarra Dean Mustaine Signature",
+        imagen:"./img/guitarras/guitarra-1-dean.jpg",
+        precio: 180000,
+        categoria:"Guitarras"
+    },
+    {
+        id:"guitarra-2",
+        titulo:"🎸 Guitarra Gibson ES35",
+        imagen: "./img/guitarras/guitarra-2-gibson.jpg",
+        precio: 130000,
+        categoria:"Guitarras"
+    },   
+    {
+        id:"guitarra-3",
+        titulo:"🎸 Guitarra Fender Stratocaster Standard",
+        imagen: "./img/guitarras/guitarra-3-fender.jpg",
+        precio: 120000,
+        categoria:"Guitarras"
+    },   
+    {
+        id:"guitarra-4",
+        titulo:"🎸 Guitarra Gibson Lespaul Red Signature",
+        imagen: "./img/guitarras/guitarra-4-lespaul.jpg",
+        precio: 130000,
+        categoria:"Guitarras"
+    },  
+    {
+        id:"guitarra-5",
+        titulo:"🎸 Guitarra Gibson Firebird",
+        imagen:"./img/guitarras/guitarra-5-firebird.jpg",
+        precio: 150000,
+        categoria:"Guitarras"
+    },   
+    {
+        id:"bajo-1",
+        titulo:"🎻 Bajo Gibson LesPaul 2015",
+        imagen: "./img/bajos/bajo-1-gibson.jpg",
+        precio: 120000,
+        categoria:"Bajos"
+    },   
+    {
+        id:"bajo-2",
+        titulo:"🎻 Bajo Spector Legend STD ",
+        imagen:"./img/bajos/bajo-2-spector.jpg",
+        precio: 160000,
+        categoria:"Bajos"
+    },  
+     {
+        id:"bajo-3",
+        titulo: "🎻 Bajo Gibson Midtown",
+        imagen:"./img/bajos/bajo-3-gibson.jpg",
+        precio: 140000,
+        categoria:"Bajos"
+    },   
+    {
+        id:"bajo-4",
+        titulo:"🎻 Bajo Spector NS Pulse",
+        imagen:"./img/bajos/bajo-4-spector.jpg",
+        precio: 180000,
+        categoria:"Bajos"
+    },   
+    {
+        id:"bajo-5",
+        titulo: "🎻 Bajo Fender American",
+        imagen:"./img/bajos/bajo-5-fender.jpg",
+        precio: 150000,
+        categoria:"Bajos"
+    },   
+    {
+        id:"pedales-1",
+        titulo: "🎛️ Pedal Vox Wah",
+        imagen:"./img/pedales/pedal-1-vox.jpg",
+        precio: 80000,
+        categoria:"Pedales"
+    },  
+    {
+        id:"pedales-2",
+        titulo:"🎛️ Pedal Hummingverb2 Reverb",
+        imagen:"./img/pedales/pedal-2-hummingverb.jpg",
+        precio:60000,
+        categoria:"Pedales"
+    },   
+    {
+        id:"pedales-3",
+        titulo:"🎛️ Pedal British Drive",
+        imagen:"./img/pedales/pedal-3-bdrive.jpg",
+        precio: 65000,
+        categoria:"Pedales"
+    },   
+    {
+        id:"pedales-4",
+        titulo:"🎛️ Pedal Boss Distortion Ds2",
+        imagen:"./img/pedales/pedal-4-distortion.jpg",
+        precio: 50000,
+        categoria:"Pedales"
+    },   
+    {
+        id:"pedales-5",
+        titulo: "🎛️ Pedal Whammy",
+        imagen:"./img/pedales/pedal-5-whammy.jpg",
+        precio: 68000,
+        categoria:"Pedales"
+    },   
+    {
+        id:"accesorios-1",
+        titulo:"🔌 Afinador Analogico",
+        imagen:"./img/accesorios/acces-1-afinador.jpg",
+        precio: 15000,
+        categoria:"Accesorios"
+    },   
+    {
+        id:"accesorios-2",
+        titulo: "🔌 Correa Cuero",
+        imagen:"./img/accesorios/acces-2-correa.jpg",
+        precio: 7000,
+        categoria:"Accesorios"
+    },   
+    {
+        id:"accesorios-3",
+        titulo: "🔌 Cable 7M",
+        imagen:"./img/accesorios/acces-3-cable.jpg",
+        precio: 12000,
+        categoria:"Accesorios"
+    },   
+    {
+        id:"accesorios-4",
+        titulo:"🔌 Capotraste Regulable",
+        imagen:"./img/accesorios/acces-4-capotraste.jpg",
+        precio: 6000,
+        categoria:"Accesorios"
+    },   
+    {
+        id:"accesorios-5",
+        titulo:"🔌 Pua Fender Medium",
+        imagen:"./img/accesorios/acces-5-puas.jpg",
+        precio: 2000,
+        categoria:"Accesorios"
+    }
+]
+const categorias = ["Guitarras", "Bajos", "Pedales", "Accesorios"];
+ 
+
+let carrito = [];
+
+let botonCompra = document.querySelector('#botonCompra');
+botonCompra.addEventListener('click',iniciarPrograma);
+
+function iniciarPrograma(){
+    agregarAlCarrito();
+    cambios();
+}
+
+function agregarAlCarrito() {
+    let montoTotal = 0;
+    let comprar = true;
+
+    while (comprar) {
+        let categoriaInput = prompt('Elija el número de la categoría:\n 1. 🎸Guitarras\n 2. 🎻Bajos\n 3. 🎛️Pedales\n 4. 🔌Accesorios');
+        let categoria = parseInt(categoriaInput);
+        if (isNaN(categoria) || categoria < 1 || categoria > 4) {
+            alert("Opción no válida. Por favor, elija un número del 1 al 4.");
+            continue;
+        }
+
+        let productosCategoria = prodArray.filter(producto => producto.categoria === categorias[categoria - 1]);
+
+        let continuarSeleccionando = true;
+        while (continuarSeleccionando) {
+            let mensajeProductos = 'Ingrese el número del producto que desea:\n';
+            productosCategoria.forEach((producto, index) => {
+                mensajeProductos += `${index + 1}. ${producto.titulo}. Precio por unidad: $${producto.precio}\n`;
+            });
+
+            let producto = parseInt(prompt(mensajeProductos));
+            if (isNaN(producto) || producto < 1 || producto > productosCategoria.length) {
+                alert(`Opción no válida, elija un número del 1 al ${productosCategoria.length}.`);
+                continue;
+            }
+
+            let cantidad = parseInt(prompt(`Ingrese la cantidad de ${productosCategoria[producto - 1].titulo} que desea`));
+            if (isNaN(cantidad) || cantidad === 0) {
+                alert(`Debe colocar un número mayor a 0 para definir la cantidad de ${productosCategoria[producto - 1].titulo}`);
+                continue;
+            }
+
+            let productoIndex = prodArray.findIndex(prod => prod.id === productosCategoria[producto - 1].id);
+            montoTotal += prodArray[productoIndex].precio * cantidad;
+            carrito.push({ cantidad: cantidad, nombre: prodArray[productoIndex].titulo, precio: prodArray[productoIndex].precio * cantidad });
+
+            let continuar = prompt(`Usted seleccionó ${prodArray[productoIndex].titulo}. Unidades: ${cantidad}.\nEl valor total de su compra hasta el momento es de $${montoTotal}\nDesea agregar otro producto de esta categoria? (Si / No)`);
+            if (validarRespuesta(continuar) ==='no') {
+                continuarSeleccionando = false;
+            }
+        }
+        let comprarMasProductos = true
+        while(comprarMasProductos){
+        let continuarComprando = prompt("¿Desea seguir comprando mas productos? (si/no)");
+        if (validarRespuesta(continuarComprando) === 'no') {
+            comprarMasProductos = false;
+            comprar = false
+        } else if(validarRespuesta(continuarComprando) ==='si') {
+            continuarComprando= false;
+            break;
+        }
+    }
+    }
+    alert(mostrarCarrito());
+}
+
+function validarRespuesta(pregunta) {
+    let respuesta = true
+    while(respuesta){
+        if(pregunta.toLowerCase() !== 'no' && pregunta.toLowerCase() !== 'si'){
+        alert ('Ingrese una opcion valida: Si/No');}
+     else respuesta = false;
+        return pregunta;
+    }
+}
+
+
+// agregarAlCarrito();
+function cambios() {
+let deseaModificar = true;
+while (deseaModificar) {
+    let opcionModificar;
+    while (true) {
+        opcionModificar = parseInt(prompt('Seleccione qué desea hacer:\n 1. Modificar cantidades de un producto\n 2. Eliminar un producto del carrito\n 3. Salir y Confirmar compra'));
+        if (!isNaN(opcionModificar) && (opcionModificar === 1 || opcionModificar === 2 || opcionModificar === 3)) {
+            break;
+        } else {
+            alert('Por favor, elija una opción válida.');
+        }
+    }
+    
+    if (opcionModificar === 1) {
+        modificarCantidadProducto();
+    } else if (opcionModificar === 2) {
+        eliminarProducto();
+    } else {
+        deseaModificar = false;
+        alert(`Felicidades por su comprar, gracias por visitar Tienda Mantis\nTenga buen dia!😄\n${mostrarCarrito()}`);
+    }
+}
+}
+
+function modificarCantidadProducto() {
+    let modificar = true;
+    while (modificar) {
+        let mensajeModificar = 'Carrito actual:\n';
+        carrito.forEach((producto, index) => {
+            mensajeModificar += `${index + 1}. ${producto.nombre} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio}\n`;
+        });
+        mensajeModificar += '\nIngrese el número del producto que desea modificar:';
+        console.log(mensajeModificar);
+
+        let productoMod = parseInt(prompt(mensajeModificar));
+
+        if (productoMod >= 1 && productoMod <= carrito.length) {
+            let prodExistente = carrito[productoMod - 1];
+            let nuevaCantidad = parseInt(prompt(`Carrito actual:\n${productoMod}. ${prodExistente.nombre} - Cantidad: ${prodExistente.cantidad} - Precio: $${prodExistente.precio}\n\nIngrese la nueva cantidad para ${prodExistente.nombre}:`));
+            if(isNaN(nuevaCantidad) || nuevaCantidad < 1){
+                alert('Debe seleccionar una cantidad en formato numerico mayor a 0')}
+                else {
+            let montoTotalNuevo = prodArray.find(item => item.titulo === prodExistente.nombre).precio * nuevaCantidad;
+            prodExistente.cantidad = nuevaCantidad;
+            prodExistente.precio = montoTotalNuevo;
+            alert(`La cantidad y el monto total para ${prodExistente.nombre} han sido actualizados.`);
+            console.log(`La cantidad y el monto total para ${prodExistente.nombre} han sido actualizados.`);
+        }} else {
+            alert('El número de producto ingresado no es válido.');
+            console.log('El número de producto ingresado no es válido.');
+        }
+        let modificarMasProductos = true
+        while(modificarMasProductos){
+            let continuarModificando = prompt('¿Desea modificar la cantidad de otro producto? (si/no)');
+            if (validarRespuesta(continuarModificando) === 'no') {
+                modificarMasProductos = false
+                modificar = false;
+        } else if(validarRespuesta(continuarModificando) ==='si') {
+            break;
+    }
+    }
+}
+}
+
+function eliminarProducto() {
+    let eliminar = true;
+    while (eliminar) {
+        let mensajeEliminar = 'Carrito actual:\n';
+        carrito.forEach((producto, index) => {
+            mensajeEliminar += `${index + 1}. ${producto.nombre} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio}\n`;
+        });
+        mensajeEliminar += '\nIngrese el número del producto que desea eliminar:';
+        console.log(mensajeEliminar);
+
+        let productoEliminar = parseInt(prompt(mensajeEliminar));
+
+        if (productoEliminar >= 1 && productoEliminar <= carrito.length) {
+            let productoEliminado = carrito.splice(productoEliminar - 1, 1);
+            alert(`El producto ${productoEliminado[0].nombre} ha sido eliminado del carrito.`);
+            console.log(`El producto ${productoEliminado[0].nombre} ha sido eliminado del carrito.`);
+        } else {
+            alert('El número de producto ingresado no es válido.');
+            console.log('El número de producto ingresado no es válido.');
+        }
+        let eliminarMasProductos = true
+        while(eliminarMasProductos){
+            let continuarEliminando = prompt('¿Desea eliminar otro producto? (si/no)');
+            if (validarRespuesta(continuarEliminando) === 'no') {
+                eliminarMasProductos = false
+                eliminar = false;
+        } else if(validarRespuesta(continuarEliminando) ==='si') {
+            break;
+    }
+    }
+    }
+}
+
+function mostrarCarrito() {
+    let mensajeCarrito = 'Productos en el carrito:\n';
+    let montoTotal = 0;
+    carrito.forEach(item => {
+        mensajeCarrito += `${item.nombre}\nCantidad: ${item.cantidad} - Precio por unidad: $${item.precio / item.cantidad}\nPrecio total: $${item.precio}\n\n`;
+        montoTotal += item.precio;
+    });
+    mensajeCarrito += `Monto total: $${montoTotal}`;
+    console.log(mensajeCarrito);
+    return mensajeCarrito
+
+}
+
+
+
+CSS
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    background-color: #064980;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;   
+    padding: 2rem;
+    color: #ffffff;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.texto-footer {
+    color: gray;
+    font-size: 0.85rem;
+}
+
+main {
+    background-color: #ffffff;
+    margin: 1rem;
+    margin-left: 0;
+    padding: 2rem;
+}
+
+.titulo-principal {
+    color: black;
+    margin-bottom: 2rem;
+}
+
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.producto-imagen {
+    max-width: 100%;
+    border: solid;
+    border-radius: 1rem;
+}
+
+.detalles {
+    background-color: #064980;
+    color: #ffffff;
+    padding: 0.5rem;
+    margin-top: -2rem;
+    position: relative;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.20rem
+}
+
+.producto-titulo {
+    font-size: 1rem;
+}
+
+.producto-agregar {
+    border: 0;
+    background-color:#ffffff;
+    padding: 0.30rem;
+    text-transform: uppercase;
+    border-radius: 1rem;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.producto-agregar:hover {
+    background-color:#064980;
+    color: #ffffff;
+}
+
+
+
+HTML
+   <div class="container">
+            <aside> 
+                <header>
+                    <h1 class="logo">Tienda Mantis</h1>
+                </header>
+                <nav>
+                    <ul class="nav__ul">
+                        <li><button class="active">Todos los productos</button></li>
+                        <li><button class="">Guitarras</button></li>
+                        <li><button class="">Bajos</button></li>
+                        <li><button class="">Pedales</button></li>
+                        <li><button class="">Accesorios</button></li>
+                        <li><a class="boton-carrito" href="carrito.html">Carrito <span class="numerito">0</span></a></li>
+                    </ul>
+                </nav>
+                <footer class="texto-footer">@ Tienda Mantis
+                </footer>
+            </aside>
+           
+           
+            <main>
+                <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
+                <div id="contenedor-productos" class="contenedor-productos">
+                    <div class="producto">
+                        <img class="producto-imagen" src="./img/Guitarras/guitarra-1-dean.jpg" alt="">
+                        <div class="detalles">
+                            <h3 class="producto-titulo">Guitarra</h3>
+                            <p class="producto-precio">$15000</p>
+                            <button class="producto-agregar">Agregar</button>
+                        </div>
+                    </div>
+                    <div class="producto">
+                    <img class="producto-imagen" src="./img/Guitarras/guitarra-1-dean.jpg" alt="">
+                        <div class="detalles">
+                        <h3 class="producto-titulo">Guitarra2</h3>
+                        <p class="producto-precio">$15000</p>
+                        <button class="producto-agregar">Agregar</button>
+                        </div>
+                    </div>
+                    <div class="producto">
+                        <img class="producto-imagen" src="./img/Guitarras/guitarra-1-dean.jpg" alt="">
+                            <div class="detalles">
+                            <h3 class="producto-titulo">Guitarra2</h3>
+                            <p class="producto-precio">$15000</p>
+                            <button class="producto-agregar">Agregar</button>
+                            </div>
+                        </div>
+                        <div class="producto">
+                            <img class="producto-imagen" src="./img/Guitarras/guitarra-1-dean.jpg" alt="">
+                                <div class="detalles">
+                                <h3 class="producto-titulo">Guitarra2</h3>
+                                <p class="producto-precio">$15000</p>
+                                <button class="producto-agregar">Agregar</button>
+                                </div>
+                            </div>
+                </div>
+            </main>
+<script src="./main.js">
+</script>   
+</body>
+</html>
+
+
+
+
+
+// botonEnvio = document.querySelector("#boton-descuento");
+    // botonEnvio.addEventListener("click", mostrarDescuento);opcionesEnvio= document.querySelector("#descuento");
+    // botonDesplegable = document.querySelector("#dropbtn-descuento");
+    // botonDesplegable.addEventListener("click", menuDesplegable);
+    // menuDesplegado= document.querySelector("#desplegado-descuento");
+    // opcionSeleccionada = document.querySelectorAll(".opcion-descuento");
+    // opcionSeleccionada.forEach (opcion => opcion.addEventListener("click", function(e) {
+    //     seleccionaOpcion(e.target.innerText); 
+    // }));
+
+    // montoDescuento = document.querySelector("#desc");
+    
+    // const botonVolver = document.querySelector("#boton-volver-descuento");
+    // botonVolver.addEventListener("click", volverAModificarCantidades);
+
+    
+
+
+    // function mostrarDescuento(){
+    //     opcionesEnvio.classList.remove("disabled");
+    //     montoEnvio.classList.remove("disabled");
+    //     // Deshabilita los botones de cantidad
+    //     botonesCambiarCantidadResta.forEach(boton => boton.disabled = true);
+    //     botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true);
+    // }
+

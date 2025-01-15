@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tienda Mantis: Tu destino en línea para productos musicales de alta calidad. Encuentra guitarras eléctricas, bajos poderosos, pedales y accesorios esenciales.">
+    <meta name="keywords" content="Tienda Mantis, música, instrumentos musicales, guitarras, bajos, pedales, accesorios">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./style/estilos.css">
+    <title>Primera entrega</title>
+</head>
+<body>
+    <header class="menu-header">
+        <nav class="menu-nav">
+            <ul class="menu-nav-ul">
+                <li><a href="./index.html"></a>Inicio</li>
+                <li><a href=""></a>Quienes somos</li>
+                <li><a href=""></a>Nuestras marcas</li>
+                <li><a href=""></a>Contacto</li>
+            </ul>
+        </nav>
+    </header>
+    <h1 class="menu-logo">Tienda Mantis</h1>
+    <div class="contenedor-buscador">
+        <input class="buscador" type="text" placeholder="Buscar productos..." id="buscar">
+    </div>
+    <nav class="contenedor-categoria">
+        <ul class="menu-categoria">
+            <li>
+                <button id="todos" class="boton-menu boton-categoria active"><i class="bi bi-music-note-beamed"></i> Todos los productos</button>
+            </li>
+            <li>
+                <button id="Guitarras" class="boton-menu boton-categoria"><i class="bi bi-music-note-beamed"></i> Guitarras</button>
+            </li>
+            <li>
+                <button id="Bajos" class="boton-menu boton-categoria"><i class="bi bi-music-note-beamed"></i> Bajos</button>
+            </li>
+            <li>
+                <button id="Pedales" class="boton-menu boton-categoria"><i class="bi bi-music-note-beamed"></i> Pedales</button>
+            </li>
+            <li>
+                <button id="Accesorios" class="boton-menu boton-categoria"><i class="bi bi-music-note-beamed"></i> Accesorios</button>
+            </li>
+        </ul>
+    </nav>
+            <main>
+                <div class="contenedor-productos-titulo">
+                    <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
+                    <a class="boton-carrito" href="./carrito.html"><i class="bi bi-cart3"></i>   Ir al carrito <span class="numero-carrito">0</span></a>
+                </div>
+                <div id="contenedor-productos" class="contenedor-productos">
+                </div>
+            </main>
+            <footer class="footer">
+                <p class="footer-p">@Tienda Mantis</p>
+                <ul class="footer-ul">
+                    <li class="footer-redes"><a href="https://www.instagram.com/mantis.banda/" target="_blank"><i class="bi bi-instagram"></i></a></li>
+                    <li class="footer-redes"><a href="https://www.youtube.com/@mantisbanda1308"target="_blank"><i class="bi bi-youtube"></i></a></li>
+                    <li class="footer-redes"><a href="https://www.facebook.com/profile.php?id=100087381406841"target="_blank"><i class="bi bi-facebook"></i></a></li>
+                    <li class="footer-redes"><a href="https://www.tiktok.com/@mantis.banda"target="_blank"><i class="bi bi-tiktok"></i></a></li>
+                </ul>
+            </footer>
+<script src="./js/main.js">
+</script>   
+</body>
+</html>
+
+
+
+
+
+
+
+
+const prodArray = [
+    {
+        id:"guitarra-1",
+        titulo:"🎸 Guitarra Dean Mustaine Signature",
+        imagen:"./img/guitarras/guitarra-1-dean.jpg",
+        precio: 180000,
+        categoria:"Guitarras"
+    },
+    {
+        id:"guitarra-2",
+        titulo:"🎸 Guitarra Gibson ES35",
+        imagen: "./img/guitarras/guitarra-2-gibson.jpg",
+        precio: 130000,
+        categoria:"Guitarras"
+    },   
+    {
+        id:"guitarra-3",
+        titulo:"🎸 Guitarra Fender Stratocaster Standard",
+        imagen: "./img/guitarras/guitarra-3-fender.jpg",
+        precio: 120000,
+        categoria:"Guitarras"
+    },   
+    {
+        id:"guitarra-4",
+        titulo:"🎸 Guitarra Gibson Lespaul Red Signature",
+        imagen: "./img/guitarras/guitarra-4-lespaul.jpg",
+        precio: 130000,
+        categoria:"Guitarras"
+    },  
+    {
+        id:"guitarra-5",
+        titulo:"🎸 Guitarra Gibson Firebird",
+        imagen:"./img/guitarras/guitarra-5-firebird.jpg",
+        precio: 150000,
+        categoria:"Guitarras"
+    },   
+    {
+        id:"bajo-1",
+        titulo:"🎻 Bajo Gibson LesPaul 2015",
+        imagen: "./img/bajos/bajo-1-gibson.jpg",
+        precio: 120000,
+        categoria:"Bajos"
+    },   
+    {
+        id:"bajo-2",
+        titulo:"🎻 Bajo Spector Legend STD ",
+        imagen:"./img/bajos/bajo-2-spector.jpg",
+        precio: 160000,
+        categoria:"Bajos"
+    },  
+     {
+        id:"bajo-3",
+        titulo: "🎻 Bajo Gibson Midtown",
+        imagen:"./img/bajos/bajo-3-gibson.jpg",
+        precio: 140000,
+        categoria:"Bajos"
+    },   
+    {
+        id:"bajo-4",
+        titulo:"🎻 Bajo Spector NS Pulse",
+        imagen:"./img/bajos/bajo-4-spector.jpg",
+        precio: 180000,
+        categoria:"Bajos"
+    },   
+    {
+        id:"bajo-5",
+        titulo: "🎻 Bajo Fender American",
+        imagen:"./img/bajos/bajo-5-fender.jpg",
+        precio: 150000,
+        categoria:"Bajos"
+    },   
+    {
+        id:"pedales-1",
+        titulo: "🎛️ Pedal Vox Wah",
+        imagen:"./img/pedales/pedal-1-vox.jpg",
+        precio: 80000,
+        categoria:"Pedales"
+    },  
+    {
+        id:"pedales-2",
+        titulo:"🎛️ Pedal Hummingverb2 Reverb",
+        imagen:"./img/pedales/pedal-2-hummingverb.jpg",
+        precio:60000,
+        categoria:"Pedales"
+    },   
+    {
+        id:"pedales-3",
+        titulo:"🎛️ Pedal British Drive",
+        imagen: "./img/pedales/pedal-3-britishdrive.jpg",
+        precio: 65000,
+        categoria:"Pedales"
+    },   
+    {
+        id:"pedales-4",
+        titulo:"🎛️ Pedal Boss Distortion Ds2",
+        imagen:"./img/pedales/pedal-4-distortion.jpg",
+        precio: 50000,
+        categoria:"Pedales"
+    },   
+    {
+        id:"pedales-5",
+        titulo: "🎛️ Pedal Whammy",
+        imagen:"./img/pedales/pedal-5-whammy.jpg",
+        precio: 68000,
+        categoria:"Pedales"
+    },   
+    {
+        id:"accesorios-1",
+        titulo:"🔌 Afinador Analogico",
+        imagen:"./img/accesorios/acces-1-afinador.jpg",
+        precio: 15000,
+        categoria:"Accesorios"
+    },   
+    {
+        id:"accesorios-2",
+        titulo: "🔌 Correa Cuero",
+        imagen:"./img/accesorios/acces-2-correa.jpg",
+        precio: 7000,
+        categoria:"Accesorios"
+    },   
+    {
+        id:"accesorios-3",
+        titulo: "🔌 Cable 7M",
+        imagen:"./img/accesorios/acces-3-cable.jpg",
+        precio: 12000,
+        categoria:"Accesorios"
+    },   
+    {
+        id:"accesorios-4",
+        titulo:"🔌 Capotraste Regulable",
+        imagen:"./img/accesorios/acces-4-capotraste.jpg",
+        precio: 6000,
+        categoria:"Accesorios"
+    },   
+    {
+        id:"accesorios-5",
+        titulo:"🔌 Pua Fender Medium",
+        imagen:"./img/accesorios/acces-5-puas.jpg",
+        precio: 2000,
+        categoria:"Accesorios"
+    }
+]
+const categorias = ["Guitarras", "Bajos", "Pedales", "Accesorios"];
+ 
+
+            /*  FUNCION PARA CARGAR PRODUCTOS AL MAIN  (CATEGORIA O BUSQUEDA)*/
+
+
+const contenedorProductos = document.querySelector("#contenedor-productos");
+const botonCategorias = document.querySelectorAll(".boton-categoria");
+const tituloPrincipal = document.querySelector("#titulo-principal");
+const numeroCarrito = document.querySelector(".numero-carrito");
+
+function cargarProductos (productosElegidos){
+
+    contenedorProductos.innerHTML = ''
+
+    productosElegidos.forEach(producto => {
+
+        let div = document.createElement('div');
+        div.classList.add('producto');
+        div.innerHTML = `
+        <img class="producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
+        <div class="detalles-productos">
+            <h3 class="producto-titulo">${producto.titulo}</h3>
+            <p class="producto-precio">$${producto.precio}</p>
+            <button class="boton-agregar" id ="${producto.id}">Agregar al carrito</button>
+        </div>
+        `;
+        contenedorProductos.append(div);
+    })
+    actualizarBotonesAgregar();
+}
+
+cargarProductos(prodArray);
+
+                                  //MOSTRAR PRODUCTOS POR BARRA DE BUSQUEDA
+
+const inputBusqueda = document.querySelector("#buscar");
+inputBusqueda.addEventListener("input", () => {
+    const productosFiltrados = prodArray.filter (producto => producto.titulo.toLowerCase().includes(inputBusqueda.value.toLowerCase()));
+    console.log(productosFiltrados)
+    cargarProductos(productosFiltrados);
+})
+
+
+                                // MOSTRAR PROD SEGUN CATEGORIA
+botonCategorias.forEach(boton => {
+    boton.addEventListener('click', (e) => {
+        botonCategorias.forEach(boton => boton.classList.remove('active'));
+        e.currentTarget.classList.add("active");
+        if(e.currentTarget.id !== 'todos') {
+            const productoCategoria = prodArray.find(producto => producto.categoria === e.currentTarget.id);
+            tituloPrincipal.innerText = productoCategoria.categoria;
+            const productosBoton = prodArray.filter(producto => producto.categoria === e.currentTarget.id);
+            cargarProductos(productosBoton);
+        } else {
+            tituloPrincipal.innerText = "Todos los productos"
+            cargarProductos(prodArray)
+        }
+    })
+})
+
+
+                        /*CHEQUEAR EL LOCALSTORAGE*/ 
+
+let carrito;
+let productosCarritoLS = localStorage.getItem("productos-carrito");
+
+if (productosCarritoLS) {
+    carrito = JSON.parse(productosCarritoLS);
+    actualizarNumeroCarrito();
+} else {
+    carrito = [];
+}
+
+
+function actualizarBotonesAgregar() {
+    botonesAgregar = document.querySelectorAll(".boton-agregar");
+
+    botonesAgregar.forEach(boton => {
+        boton.addEventListener("click", agregarAlCarrito);
+    });
+}
+
+
+                 /* AGREGAR PRODUCTOS AL CARRITO Y ACTUALIZAR LS Y NUMERO DE PROD CARRITO */
+
+function agregarAlCarrito(e) {
+
+            const idBoton = e.currentTarget.id;
+            const productoAgregado = prodArray.find(producto => producto.id === idBoton);
+        
+            if(carrito.some(producto => producto.id === idBoton)) {
+            const index = carrito.findIndex(producto => producto.id === idBoton);
+            carrito[index].cantidad++;
+            carrito[index].subtotal += carrito[index].precio;
+
+            } else {
+            productoAgregado.subtotal = productoAgregado.precio;
+            productoAgregado.cantidad = 1;
+            carrito.push(productoAgregado);
+}
+
+actualizarNumeroCarrito();
+
+localStorage.setItem("productos-carrito", JSON.stringify(carrito));
+
+}
+
+                 /*  FUNCION ACTUALIZAR NUMERO DE PROD CARRITO*/
+
+function actualizarNumeroCarrito() {
+let nuevoNumero = carrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+numeroCarrito.innerText = nuevoNumero;
+}
+
+
+
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@200..900&family=Rubik+Doodle+Triangles&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@200..900&family=Rubik+Doodle+Triangles&family=Whisper&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul {
+    list-style-type: none;
+}
+
+a{
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+
+
+.menu-nav-ul {
+    display: flex;
+    justify-content: end;
+    padding: 1rem;
+    background-color: #a00d0d;
+}
+
+.menu-nav-ul li {
+    margin-inline: 1rem;
+    cursor: pointer;
+    color: #060808;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 2rem;
+}
+
+.menu-nav-ul li:hover {
+    color: #ffffff;
+    text-shadow:  0 0 5px red, 0 0 5px red, 0 0 5px red, 0 0 5px red;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.menu-logo {
+    background-color: #000000;
+    width: 100%;
+    color: #ffffff;
+    font-family: "whisper";
+    font-weight: bold;
+    font-size: 3rem;
+    text-align: center;
+    text-shadow:  0 0 5px red, 0 0 5px red, 0 0 5px red, 0 0 5px red;
+}
+
+
+.menu-logo:hover {
+    text-shadow:  0 0 5px red, 0 0 5px red, 0 0 5px red, 0 0 5px red,0 0 5px red, 0 0 5px red, 0 0 5px red, 0 0 5px red;
+    transition: text-shadow 0.1s
+}
+
+.contenedor-buscador {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0.5rem;
+}
+.buscador {
+    width: 80%;
+    font-size: 1rem;
+    padding: 0.3rem;
+    font-weight: bold;
+}
+
+.contenedor-categoria{
+    display: flex;
+    justify-content: center;
+}
+
+.menu-categoria {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem;
+}
+
+.boton-menu{
+    background-color: transparent;
+    border: 0;
+    color: #850808;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.boton-menu.active {
+    background-color: #000000;
+    color:#ffffff;
+    width: 90%;
+    border-radius: 1rem;
+    text-shadow:  0 0 5px red, 0 0 5px red, 0 0 5px red
+}
+
+.footer {
+    display: flex;
+    padding: 3rem;
+    background-color: #850808;
+    justify-content: space-between;
+}
+
+.footer-p {
+    font-weight: bold;
+    text-shadow:  0 0 5px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255); 
+}
+.footer-ul {
+    display: flex;
+}
+
+.footer-redes {
+    margin-inline: 1rem;
+    font-size: 1.3rem;
+}
+
+
+                                                              /* MAIN */
+
+main {
+    background-color: #000000;
+    padding: 2rem;
+    padding-bottom: 5rem;
+    border: #050505 5px solid;
+    box-shadow: inset 0 0 5px rgb(255, 255, 255), inset 0 0 5px rgb(255, 255, 255), inset 0 0 5px rgb(255, 255, 255) ;
+}
+
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 300px;
+    gap: 1.5rem;
+}
+
+.contenedor-productos-titulo {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.titulo-principal {
+    color:#ffffff
+}
+
+.boton-carrito {
+    font-size: 1.2rem;
+    color: #ffffff;
+    transition: text-shadow 0.3s;
+}
+
+.boton-carrito:hover{
+    text-shadow:  0 0 5px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255);
+}
+
+.numero-carrito {
+    background-color: #ffffff;
+    color: #064980;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    margin-left: 0.5rem;
+}
+
+.producto {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    border-radius: 1rem;
+}
+
+.producto-imagen {
+    padding: 1.5rem;
+    max-width: 100%;
+    border: inset ;
+    border-radius: 1rem;
+    height: 100%;
+    object-fit: contain;
+}
+
+.detalles-productos {
+    background-color: #a00d0d;
+    color: #ffffff;
+    padding: 0.5rem;
+    margin-top: -2rem;
+    position: relative;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.20rem
+}
+
+.producto-titulo {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.producto-precio {
+    text-align: center;
+}
+
+.boton-agregar {
+    border: 0;
+    background-color:#ffefef;
+    padding: 0.30rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 1rem;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.boton-agregar:hover {
+    background-color:#000000;
+    color: #ffffff;
+    text-shadow:  0 0 5px red, 0 0 5px red, 0 0 5px red, 0 0 5px red;
+}
+
+
+
+
+
+                                    /* CARRITO */
+
+.contenedor {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    background-color: #a00d0d;
+}
+
+.menu-carrito-logo {
+    color: #ffffff;
+    font-family: "whisper";
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    margin-right: 2rem;
+    text-shadow:  0 0 5px red, 0 0 5px red, 0 0 5px red, 0 0 5px red;
+    transition: text-shadow 0.5s, color 0.5s;
+}
+
+.menu-carrito-logo:hover{
+    text-shadow:  0 0 5px red, 0 0 5px red, 0 0 5px red, 0 0 5px red;
+    color: #000000;
+    
+}
+.logo-imagen {
+    max-width: 100%;
+    margin-left: -10px;
+    margin-top: 10px;
+    border-radius: 0.8rem;
+    border: #000000 10px double;
+    text-align: center;
+    box-shadow: 0 0 5px white, 0 0 5px white, 0 0 5px white;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  
+    padding: 1rem;
+    padding-right: 0;
+    color: #ffffff;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    margin-right: 0.5rem;
+}
+
+
+.boton-menu-carrito {
+    color: #ffffff;
+    margin-block: 2rem;
+    text-align: center;
+    transition: color 0.5s, text-shadow 0.5s;
+}
+.boton-menu-carrito:hover {
+    cursor: pointer;
+    color:#020202;
+    text-shadow:  0 0 5px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255);
+}
+
+.li-carrito {
+    background-color: #ffffff;
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 0.8rem;
+}
+
+ .boton-menu-carrito.active{
+    font-weight: bold;
+    cursor: pointer;
+    color:#020202;
+} 
+.boton-envio {
+    background-color:#a00d0d;
+    border: 0;
+    font-size: 1rem;
+
+
+/*   carrito  */
+
+}
+.carrito-vacio{
+    color:#ffffff;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+}
+.carrito-comprado {
+    color: #ffffff;
+    font-size: 1.3rem;
+}
+.contenedor-carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.carrito-productos{
+    margin-top: 2rem;
+    display: flEx;
+    flex-direction: column;
+    gap: 1rem;
+}
+.carrito-producto {
+    display: flex;
+    justify-content: space-between;
+    background-color: gray;
+    color:#000000;
+    padding: 1rem;
+    border-radius: 1rem;
+    align-items: center;
+}
+.carrito-producto h3{
+    color: #ffffff;
+}
+.carrito-producto-imagen {
+    width: 3rem;
+    border-radius: 0.2rem;
+}
+.carrito-producto small{
+    font-size: 1rem;
+}
+.carrito-opciones-cantidad{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.cantidad-resta{
+    cursor: pointer;
+    padding: 0.1rem;
+    font-size: 13px;
+}
+.cantidad-suma{
+    cursor: pointer;
+    padding: 0.1rem;
+    font-size: 13px;
+}
+.carrito-producto p {
+    font-weight: bold;
+    color: #ffffff;
+}
+.carrito-producto-eliminar {
+    border: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: transparent;
+    color: red;
+    padding-right: 0.5rem;
+    cursor: pointer;
+}
+.carrito-acciones{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.carrito-boton-vaciar {
+    border: 0;
+    background-color: #808080;
+    padding: 0.8rem;
+    border-radius: 1rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.carrito-boton-comprar{
+    border: 0;
+    background-color: #4d0707;
+    padding: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: text-shadow 0.3s;
+}
+.carrito-boton-comprar:hover{
+    text-shadow:  0 0 5px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255);
+}
+.carrito-acciones-derecha {
+    display: flex;
+}
+.carrito-acciones-total{
+    display: flex;
+    border: 0;
+    background-color: gray;
+    padding: 0.8rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem ;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+
+
+                /*  MENU DESPLEGABLE */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+.disabled {
+    display: none;
+}
+  .dropbtn {
+    display: flex;
+    width: 100%;
+    border: 0;
+    background-color: #808080;
+    padding: 0.4rem;
+    border-radius: 1rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .carrito-acciones-costo{
+    padding: 0.6rem;
+    border: 0;
+    background-color: #808080;
+    border-radius: 1rem;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+  .dropbtn.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: grey;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px
+  }
+  .dropdown-content a {
+    text-align: center;
+    border: 1px solid black;
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: #000000;
+}
+.dropdown-content a:last-child:hover{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px
+}
+.show {
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+let productosEnCarrito = JSON.parse(localStorage.getItem("productos-carrito"));
+
+const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
+const contenedorCarritoProductos = document.querySelector("#carrito-productos");
+const contenedorCarritoAcciones = document.querySelector("#carrito-acciones");
+const contenedorCarritoComprado = document.querySelector("#carrito-comprado");
+let botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
+const botonVaciar = document.querySelector("#carrito-boton-vaciar");
+const contenedorTotal = document.querySelector("#total");
+const botonComprar = document.querySelector("#carrito-boton-comprar");
+
+                //                                                          CARGAR PRODUCTOS DEL CARRITO 
+
+
+function cargarCarrito() {
+    if (productosEnCarrito && productosEnCarrito.length > 0) {
+
+        contenedorCarritoVacio.classList.add("disabled");
+        contenedorCarritoProductos.classList.remove("disabled");
+        contenedorCarritoAcciones.classList.remove("disabled");
+        contenedorCarritoComprado.classList.add("disabled");
+    
+        contenedorCarritoProductos.innerHTML = "";
+        productosEnCarrito.forEach(producto => {
+
+            const div = document.createElement("div");
+            div.classList.add("carrito-producto");
+            div.innerHTML = `
+                <img class="carrito-producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
+                <div class="carrito-producto-titulo">
+                    <small>Título</small>
+                    <h3>${producto.titulo}</h3>
+                </div>
+                <div class="carrito-producto-cantidad">
+                    <small>Cantidad</small>
+                    <div class="carrito-opciones-cantidad">
+                    <button id="${producto.id}" class="cantidad-resta">- </button>
+                    <p> ${producto.cantidad} </p>
+                    <button id="${producto.id}" class="cantidad-suma"> +</button>
+                    </div>
+                </div>
+                <div class="carrito-producto-precio">
+                    <small>Precio</small>
+                    <p>$${producto.precio}</p>
+                </div>
+                <div class="carrito-producto-subtotal">
+                    <small>Subtotal</small>
+                    <p>$${producto.subtotal}</p>
+                </div>
+                <button class="carrito-producto-eliminar" id="${producto.id}"><i class="bi bi-trash-fill"></i></button>
+            `;
+    
+            contenedorCarritoProductos.append(div);
+        })
+    actualizarBotonesCantidad();
+    actualizarBotonesEliminar();
+    actualizarTotal();
+	
+    } else {
+        contenedorCarritoVacio.classList.remove("disabled");
+        contenedorCarritoProductos.classList.add("disabled");
+        contenedorCarritoAcciones.classList.add("disabled");
+        contenedorCarritoComprado.classList.add("disabled");
+    }
+
+}
+
+cargarCarrito();
+
+
+                    //                                              HABILITA LOS BOTONES PARA ELIMINAR PRODUCTOS
+
+function actualizarBotonesEliminar() {
+    botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
+
+    botonesEliminar.forEach(boton => {
+        boton.addEventListener("click", eliminarDelCarrito);
+    });
+
+}
+ 
+//                                                                          ELIMAR PRODUCTOS AGREGADOS
+
+function eliminarDelCarrito(e) {
+    const idBoton = e.currentTarget.id;
+    const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+    
+    productosEnCarrito.splice(index, 1);
+    cargarCarrito();
+
+    localStorage.setItem("productos-carrito", JSON.stringify(productosEnCarrito));
+
+    opcionesEnvio.classList.add("disabled");
+    desplegado.classList.remove("show");
+    montoEnvio.classList.add("disabled")
+    montoEnvio.innerText = `Costo de envío:`;
+}
+
+                             //                                                  VACIAR EL CARRITO
+
+botonVaciar.addEventListener("click", vaciarCarrito);
+function vaciarCarrito() {
+ productosEnCarrito.length = 0
+ localStorage.setItem('productos-carrito', JSON.stringify(productosEnCarrito));
+ cargarCarrito();
+}
+
+//                                                                           ACTUALIZA EL TOTAL
+
+function actualizarTotal() {
+    const montoTotal = productosEnCarrito.reduce((acc, producto) => acc + (producto.cantidad * producto.precio), 0);
+    contenedorTotal.innerText = `$${montoTotal}`;
+}
+
+//                                                                                  CONFIRMAR COMPRA
+
+
+botonComprar.addEventListener("click", comprarCarrito);
+function comprarCarrito() {
+
+    productosEnCarrito.length = 0;
+    localStorage.setItem("productos-carrito", JSON.stringify(productosEnCarrito));
+    
+    contenedorCarritoVacio.classList.add("disabled");
+    contenedorCarritoProductos.classList.add("disabled");
+    contenedorCarritoAcciones.classList.add("disabled");
+    contenedorCarritoComprado.classList.remove("disabled");
+
+}
+
+//                                                                        CALCULAR COSTO DE ENVIO
+
+    botonEnvio = document.querySelector("#boton-envio");
+    botonEnvio.addEventListener("click", mostrarEnvio);
+
+    botonDesplegable = document.querySelector("#dropbtn");
+    botonDesplegable.addEventListener("click", menuDesplegable);
+
+    menuDesplegado= document.querySelector("#desplegado");
+
+    opcionesEnvio= document.querySelector("#envio");
+
+    opcionSeleccionada = document.querySelectorAll(".opcion");
+    opcionSeleccionada.forEach (opcion => opcion.addEventListener("click", function(e) {
+        seleccionaOpcion(e.target.innerText); 
+    }));
+
+    montoEnvio = document.querySelector("#costo");
+    
+    const botonVolver = document.querySelector("#boton-volver");
+    botonVolver.addEventListener("click", volverAModificarCantidades);
+    
+    let opcionSelec = null; // Variable global para almacenar la opción seleccionada
+
+
+
+                                                 //MODIFICAR CANTIDADES DESDE EL CARRITO
+
+    
+function volverAModificarCantidades(){
+    botonesCambiarCantidadResta.forEach(boton => boton.disabled = false);
+    botonesCambiarCantidadSuma.forEach(boton => boton.disabled = false);
+    opcionSelec = null;
+    botonDesplegable.innerHTML = `<button id="dropbtn" class="dropbtn">Seleccionar opción <i class="bi bi-arrow-down-circle"></i></button>`;
+    opcionesEnvio.classList.add("disabled");
+    montoEnvio.classList.add("disabled");
+}
+
+                       // MOSTRAR EL CALCULO DE ENVIO
+
+
+
+function mostrarEnvio() {
+    opcionSelec = null;
+    botonDesplegable.innerHTML = `<button id="dropbtn" class="dropbtn">Seleccionar opción <i class="bibi-arrow-down-circle"></i></button>`;
+    opcionesEnvio.classList.remove("disabled");
+    montoEnvio.classList.remove("disabled");
+    // Deshabilita los botones de cantidad
+    botonesCambiarCantidadResta.forEach(boton => boton.disabled = true);
+    botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true);
+}
+   
+
+
+                                                                // MOSTRAR OPCIONES DE ENVIO
+
+
+
+function seleccionaOpcion(opcion) {
+        opcionSelec = opcion;
+        botonDesplegable.innerHTML = `<button id="dropbtn" class="dropbtn">${opcion} <i class="bi bi-arrow-down-circle"></i></button>`;
+        desplegado.classList.remove("show");
+        opcionesEnvio.classList.remove("disabled"); 
+        if (opcionSelec) {
+            calcularEnvio(opcion);
+            botonDesplegable.classList.remove("active")
+        }
+}
+
+
+
+        //                                                             CALCULAR ENVIO
+
+
+function calcularEnvio(opcionElegida) {
+    costoSeleccionado = costoEnvio.find(opcion => opcion.id === opcionElegida);
+    if(costoSeleccionado){
+        let montoTotal = productosEnCarrito.reduce((acc, producto) => acc + producto.subtotal, 0); 
+        nuevoTotal =  montoTotal + costoSeleccionado.costo;
+        montoEnvio.innerText = `Costo de envío: $${costoSeleccionado.costo}`;
+        contenedorTotal.innerText = `$${nuevoTotal}`;
+        // Deshabilita los botones de cantidad
+        botonesCambiarCantidadResta.forEach(boton => boton.disabled = true);
+        botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true);
+       }
+}
+
+
+
+//                                                                  MENU DESPLEGABLE
+
+function menuDesplegable() {
+    desplegado.classList.toggle("show");
+    botonDesplegable.classList.toggle("active")
+}
+
+
+
+                                                                 //ARRAY DE COSTO DE ENVIO
+
+costoEnvio = [
+    {
+        id: "CABA",
+        costo: 1500
+    }  ,
+    {
+        id: "Gran Buenos Aires",
+        costo: 2000
+    } , 
+    {
+        id: "Interior",
+        costo: 2500
+    },
+    {
+        id : "Retiro en tienda",
+        costo: 0
+    },
+    {
+        id : "Volver",
+        costo: 0
+    }
+  ];  
+
+
+                                                                           // HABILITAR LOS BOTONES DE CANTIDAD
+
+function actualizarBotonesCantidad() {
+    botonesCambiarCantidadResta = document.querySelectorAll(".cantidad-resta");
+    
+    botonesCambiarCantidadSuma = document.querySelectorAll(".cantidad-suma");
+    
+    botonesCambiarCantidadResta.forEach(boton => {
+        boton.addEventListener("click", cambiarCantidad);
+    });
+    
+    botonesCambiarCantidadSuma.forEach(boton => {
+        boton.addEventListener("click", cambiarCantidad);
+    });
+}
+
+                                                              // CAMBIAR LAS CANTIDADES Y ACTUALIZAR LOS TOTALES
+
+function cambiarCantidad(e){
+    const classBoton = e.currentTarget.classList;
+    const idBoton = e.currentTarget.id;
+    const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+    
+    if (classBoton.contains('cantidad-resta')) {
+        if(productosEnCarrito[index].cantidad > 1) {
+            productosEnCarrito[index].cantidad--;
+            actualizarTotal();
+        }
+    } else {
+        productosEnCarrito[index].cantidad++;
+    actualizarTotal();
+}
+    productosEnCarrito[index].subtotal = productosEnCarrito[index].cantidad * productosEnCarrito[index].precio;
+    cargarCarrito();
+    localStorage.setItem("productos-carrito", JSON.stringify(productosEnCarrito));
+}
+
+
+
+
+
+
+
+// const botonDescuento = document.querySelector("#boton-descuento");
+// const solapaDescuento = document.querySelector(".solapa-descuento")
+// botonDescuento.addEventListener("click", ()=> { 
+//  solapaDescuento.classList.remove("disabled");
+//  botonesCambiarCantidadResta.forEach(boton => boton.disabled = true);
+//  botonesCambiarCantidadSuma.forEach(boton => boton.disabled = true);
+// })
+
+// let descuentoAplicado = localStorage.getItem('descuentoAplicado') === 'true';
+// let totalConDescuento = parseFloat(localStorage.getItem('totalConDescuento')) || null;
+
+// // Si no hay ningún valor guardado en localStorage para el total con descuento, lo establecemos en null
+// // Esto indica que aún no se ha calculado el total con descuento
+// if (totalConDescuento === null) {
+//     totalConDescuento = null;
+// }
+
+// const codigoAplicado = document.querySelector(".cupon-descuento");
+// const codigoDescuento = document.querySelector(".boton-aplicar-descuento");
+
+// // Si el total con descuento ya ha sido calculado, actualizamos la interfaz con ese valor
+// if (totalConDescuento !== null) {
+//     contenedorTotal.innerText = `$${totalConDescuento}`;
+// }
+
+// aplicarDescuento();
+
+// function aplicarDescuento() {
+//     const descuento = 0.1;
+
+//     codigoDescuento.addEventListener("click", () => {
+//         const codigoIngresado = codigoAplicado.value.toLowerCase(); // Obtenemos el valor del input y lo convertimos a minúsculas
+//         if (!descuentoAplicado) {
+//             if (codigoIngresado === "mantis10") {
+//                 let montoTotal = productosEnCarrito.reduce((acc, producto) => acc + (producto.cantidad * producto.precio), 0);
+//                 let nuevoTotal = montoTotal * (1 - descuento); // Aplicamos el descuento al monto total
+//                 contenedorTotal.innerText = `$${nuevoTotal}`;
+//                 localStorage.setItem('descuentoAplicado', true);
+//                 localStorage.setItem('totalConDescuento', nuevoTotal); // Guardamos el total con descuento en localStorage
+//                 codigoAplicado.value = ""; // Limpiamos el contenido del input
+//                 codigoAplicado.setAttribute("placeholder", "Código de descuento");
+//                 alert("Su cupón ha sido aplicado, gracias");
+//             } else {
+//                 alert("Código erróneo");
+//                 codigoAplicado.value = ""; 
+//                 codigoAplicado.setAttribute("placeholder", "Código de descuento");
+//             }
+//         } else {
+//             if (codigoIngresado === "mantis10") {
+//                 alert("Este cupón ya ha sido utilizado");
+//             } else {
+//                 alert("Código erróneo");
+//             }
+//             codigoAplicado.value = ""; 
+//             codigoAplicado.setAttribute("placeholder", "Código de descuento");
+//         }
+//     });
+// }
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Mantis</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./style/estilos.css">
+</head>
+<body>
+
+    <div class="contenedor">
+        <aside>
+            <header>
+                <h1 class="menu-carrito-logo">Tienda mantis</h1>
+                <img class="logo-imagen"src="./img/logo.jpeg" alt="">
+            </header>
+            <nav class="nav-carrito">
+                <ul class="menu-carrito">
+                    <li>
+                        <a class="boton-menu-carrito boton-volver" href="./index.html"><i class="bi bi-arrow-return-left"></i> Continuar comprando
+                        </a>
+                    </li>
+                    <li class="li-carrito">
+                        <a class="boton-menu-carrito active boton-carrito" href="./carrito.html"><i class="bi bi-cart3"></i> Carrito
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <button id= "boton-envio" class="boton-menu-carrito boton-envio"><i class="bi bi-truck"></i> Calcular costo de envio</button>
+            <footer>
+                <p class="texto-footer">© 2024 Tienda Mantis</p>
+            </footer>
+        </aside>
+        <main>
+            <h2 class="titulo-principal">Carrito</h2>
+            <div class="contenedor-carrito">
+                <p id="carrito-vacio" class="carrito-vacio">Tu carrito está vacío.👎</p>
+                <div id="carrito-productos" class="carrito-productos disabled">  
+                </div>
+                <div id="carrito-acciones" class="carrito-acciones disabled">
+                    <div class="carrito-acciones-izquierda">
+                        <button id="carrito-boton-vaciar" class="carrito-boton-vaciar">Vaciar carrito</button>
+                    </div>
+                    <div id="envio" class="dropdown disabled ">
+                        <button id="dropbtn" class="dropbtn">Seleccionar Opción<i id="flecha" class="bi bi-arrow-down-circle"></i></button>
+                        <div id= "desplegado" class="dropdown-content">
+                          <a class="opcion">CABA</a>
+                          <a class="opcion">Gran Buenos Aires</a>
+                          <a class="opcion">Interior</a>
+                          <a class="opcion">Retiro en tienda</a>
+                          <a id= "boton-volver" class="opcion">Volver</a>
+                        </div>
+                    </div>
+                    <p class="carrito-acciones-costo disabled" id="costo">Costo de envio:</p>
+                    <div class="carrito-acciones-derecha">
+                        <div class="carrito-acciones-total">
+                            <p>Total: </p>
+                            <p id="total"></p>
+                        </div>
+                        <button id="carrito-boton-comprar" class="carrito-boton-comprar">Comprar</button>
+                    </div>
+                </div>
+                <!-- <div class="boton-descuento" id="boton-descuento">
+                    <button>Utilizar cupon de descuento</button>
+                </div>
+                <div class="solapa-descuento disabled">
+                    <input type="text" placeholder="Aplicar cupon de descuento"           class="cupon-descuento">
+                    <button class="boton-aplicar-descuento">Aplicar</button>
+                </div> -->
+                <p id="carrito-comprado" class="carrito-comprado disabled">Muchas gracias por tu compra.🤟 </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./js/carrito.js">
+    </script>
+    </body>
+    </html>
+
+
+
+
+
+
+
+
+
+
