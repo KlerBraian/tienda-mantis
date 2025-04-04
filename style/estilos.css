@@ -426,9 +426,16 @@ aside {
     color: #ffffff;
 }
 
+.carrito-producto-titulo {
+    width: 20rem;
+}
+
 .carrito-producto-imagen {
+    background-color: #fff;
     width: 3rem;
+    height: 3rem;
     border-radius: 0.2rem;
+    object-fit: contain;
 }
 
 .carrito-producto small {
@@ -806,17 +813,6 @@ aside {
     transition: all 3.5s ease-in-out
 }
 
-.ocultar-menu {
-    color: #ffffff;
-    background-color: #a00d0d;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 30px;
-    border: none;
-    transition: all 3.5s ease-in-out
-}
 
 .mostrar-menu:hover, .ocultar-menu:hover{
     border: 2px solid #ffffff;
