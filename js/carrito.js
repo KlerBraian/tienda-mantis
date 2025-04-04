@@ -10,8 +10,9 @@ const contenedorTotal = document.querySelector("#total");
 const botonComprar = document.querySelector("#carrito-boton-comprar");
 const botonContinuarComprando= document.querySelector("#continuar-comprando")
 const apartadoDescuento = document.querySelector(".contenedor-apartado-descuento")
-
-
+const botonOcultarMenu = document.querySelector(".boton-ocultar")
+const mainCart= document.querySelector(".cart-main")
+const botonMostrarMenu = document.querySelector(".mostrar-menu")
                 //                                                    CARGAR PRODUCTOS DEL CARRITO
 
 
@@ -402,3 +403,15 @@ function aplicarDescuento () {
     contenedorTotal.innerText = `${totalConDescuento}`
     localStorage.setItem("total" , JSON.stringify(totalConDescuento))
 } 
+
+
+botonMostrarMenu.addEventListener("click", () => {
+    botonMostrarMenu.classList.toggle("ocultar-menu")
+    mainCart.classList.toggle("ocultar")
+    if (botonMostrarMenu.classList.contains("ocultar-menu")) {
+        botonMostrarMenu.innerHTML = "➡"; // Ocultar
+      } else {
+        botonMostrarMenu.innerHTML = "⬅"; // Mostrar
+      }
+
+})
