@@ -69,6 +69,7 @@ body {
     font-size: 3rem;
     text-align: center;
     text-shadow: 0 0 5px red, 0 0 5px red, 0 0 5px red, 0 0 5px red;
+    padding: 1rem;
 }
 
 
@@ -82,6 +83,7 @@ body {
     justify-content: center;
     width: 100%;
     padding: 0.5rem;
+    margin: 1rem;
 }
 
 .buscador {
@@ -94,6 +96,7 @@ body {
 .contenedor-categoria {
     display: flex;
     justify-content: center;
+    margin: 1rem;
 }
 
 .menu-categoria {
@@ -420,6 +423,7 @@ aside {
     padding: 1rem;
     border-radius: 1rem;
     align-items: center;
+    gap: 0.7rem;
 }
 
 .carrito-producto h3 {
@@ -480,6 +484,7 @@ aside {
     justify-content: space-between;
     align-items: start;
     min-height: 35vh;
+    gap: 0.5rem;
 }
 
 .carrito-boton-vaciar {
@@ -759,12 +764,37 @@ aside {
         /* Centra los elementos del menú */
     }
 
+    .li-carrito {
+        width: auto;
+        margin-left: 0;
+    }
+
 }
+
+
+
+
 
 /* Para pantallas menores a 768px (móviles) */
 @media (max-width: 768px) {
     main {
         padding: 4rem;
+    }
+
+    
+    .menu-hamburguesa {
+        display: flex !important;
+        justify-content: end;
+        padding: 1rem;
+    }
+    
+    .menu-nav-ul li {
+        margin-inline: 0;
+        padding: 0.3rem;
+    }
+
+    .menu-nav {
+        position: relative;
     }
 
     .contenedor-productos {
@@ -774,9 +804,20 @@ aside {
     }
 
     .menu-nav-ul {
+        background-color: rgba(0, 0, 0, 0.4); /* negro con 50% de opacidad */
+        position: absolute;
         flex-direction: column;
-        align-items: center;
+        align-items: end;
         padding: 0.5rem;
+        top: -150px;
+        right: 0;
+        transition:  top 0.5s ease-in-out;
+        border-radius: 0.5rem;
+        z-index: 10;
+    }
+
+    .nav-link{
+    color: #fff;
     }
 
     .menu-logo {
@@ -793,12 +834,14 @@ aside {
         font-size: 0.8rem;
         padding: 0.5rem 1rem;
     }
-
+    .menu {
+        font-size: 1.3rem;
+    }
 }
 
 .ocultar {
     margin-left: -25%;
-   width: auto;
+    width: auto;
 }
 
 .mostrar-menu {
@@ -814,6 +857,33 @@ aside {
 }
 
 
-.mostrar-menu:hover, .ocultar-menu:hover{
+.mostrar-menu:hover,
+.ocultar-menu:hover {
     border: 2px solid #ffffff;
+}
+
+
+
+
+
+.menu-hamburguesa {
+    display: none;
+    width: 100%;
+    padding: 1rem;
+    background-color: #a00d0d;
+}
+
+.menu {
+    border: 0;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.desplegar {
+   top: 40px;
+}
+
+.body-opacity{
+    z-index: 1;
 }

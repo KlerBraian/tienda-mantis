@@ -132,3 +132,13 @@ function actualizarNumeroCarrito() {
     let nuevoNumero = carrito.reduce((acc, producto) => acc + producto.cantidad, 0);
     numeroCarrito.innerText = nuevoNumero;
 }
+
+
+let menuHamburguesa = document.querySelector(".menu-nav-ul")
+let menu = document.querySelector("#button-menu");
+let page = document.querySelector(".container-page")
+
+menu.addEventListener("click", ()=> {
+    menuHamburguesa.classList.toggle("desplegar")
+    page.classList.toggle("body-opacity")
+})
