@@ -301,7 +301,7 @@ function menuDesplegable() {
 
 function seleccionaOpcion(opcion) {
         opcionSelec = opcion;
-        botonDesplegable.innerHTML = `<button id="dropbtn" class="dropbtn">${opcion} <i class="bi bi-arrow-down-circle"></i></button>`;
+        botonDesplegable.innerHTML = `<button id="dropbtn" class="dropbtn">${opcion} <i class="bi bi-arrow-down-circle"> </i></button>`;
         desplegado.classList.remove("show");
         opcionesEnvio.classList.remove("disabled");
         
