@@ -88,6 +88,7 @@ body {
 }
 
 .buscador {
+    max-width: 100%;
     width: 80%;
     font-size: 1rem;
     padding: 0.3rem;
@@ -117,6 +118,7 @@ body {
 }
 
 .boton-menu.active {
+    max-width: 100%;
     background-color: #000000;
     color: #ffffff;
     width: 90%;
@@ -373,6 +375,7 @@ aside footer {
 }
 
 .li-carrito {
+    max-width: 100%;
     background-color: #ffffff;
     width: 50%;
     margin-left: 25%;
@@ -759,6 +762,7 @@ aside footer {
 
 
 .ocultar {
+    max-width: 100%;
     margin-left: -25%;
     width: auto;
 }
@@ -818,6 +822,7 @@ aside footer {
         z-index: 99;
     }
     .carrito-producto-imagen{
+        max-width: 100%;
         position: absolute;
         width: 20%;
         height: 100%;
@@ -849,6 +854,7 @@ aside footer {
     }
 
     .li-carrito {
+        max-width: 100%;
         width: auto;
         margin-left: 0;
     }
@@ -1009,6 +1015,7 @@ aside footer {
         opacity: 0.4;
     }
     .carrito-producto-titulo{
+        max-width: 100%;
         width: auto;
     }
 }
