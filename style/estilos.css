@@ -948,7 +948,7 @@ aside footer {
     
 }
 
-@media (max-width: 365px) {
+@media (max-width: 500px) {
     main {
         padding: 1rem; 
     }
