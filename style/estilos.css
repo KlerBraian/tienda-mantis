@@ -947,6 +947,22 @@ aside footer {
 }
 
 @media (max-width: 365px) {
+    main {
+        padding: 1rem; 
+    }
+    .contenedor-productos {
+        grid-template-columns: repeat(1, 1fr); 
+        gap: 1rem;
+    }
+    
+    .producto {
+        height: auto; 
+    }
+
+    .boton-menu {
+        font-size: 0.7rem; 
+    }
+
     .cart-main {
         padding: 1rem;
     }
@@ -993,3 +1009,4 @@ aside footer {
         width: auto;
     }
 }
+
