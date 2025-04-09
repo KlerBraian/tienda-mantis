@@ -175,6 +175,8 @@ body {
 
 
 main {
+    max-width: 100%;
+    width: 100%;
     position: relative;
     background-color: #000000;
     padding: 5rem;
