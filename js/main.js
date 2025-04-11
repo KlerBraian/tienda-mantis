@@ -149,7 +149,6 @@ function actualizarNumeroCarrito() {
 
 let menuHamburguesa = document.querySelector(".menu-nav-ul")
 let menu = document.querySelector("#button-menu");
-let page = document.querySelector(".container-page")
 
 menu.addEventListener("click", () => {
     menuHamburguesa.classList.toggle("desplegar")
