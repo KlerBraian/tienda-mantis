@@ -153,5 +153,4 @@ let page = document.querySelector(".container-page")
 
 menu.addEventListener("click", () => {
     menuHamburguesa.classList.toggle("desplegar")
-    page.classList.toggle("body-opacity")
 })
